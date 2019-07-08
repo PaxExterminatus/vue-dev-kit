@@ -1,0 +1,17 @@
+@mixin margin-child-right($margin) {
+  & > * {
+    margin-right: $margin;
+  }
+  & > *:last-child {
+    margin-right: 0;
+  }
+}
+
+@mixin margin-child-bottom($margin) {
+  & > * {
+    margin-bottom: $margin;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}

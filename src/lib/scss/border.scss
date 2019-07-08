@@ -1,0 +1,9 @@
+@import "border-mixin";
+
+.brd-lap {
+  @include brd-lap;
+}
+
+.brd-rounded {
+  @include brd-rounded;
+}

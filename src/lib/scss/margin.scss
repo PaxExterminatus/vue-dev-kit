@@ -1,0 +1,9 @@
+@import "./margin-mixin";
+
+.margin-child-right {
+  @include margin-child-right(15px);
+}
+
+.margin-child-bottom {
+  @include margin-child-bottom(5px);
+}

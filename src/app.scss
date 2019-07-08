@@ -1,0 +1,7 @@
+@import "lib/mixins";
+
+.page.svg {
+  .rw {
+    @include margin-child-right(15px);
+  }
+}

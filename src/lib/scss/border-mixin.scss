@@ -1,0 +1,10 @@
+
+@mixin brd-lap {
+  border: solid 2px;
+  border-radius: 50%;
+}
+
+@mixin brd-rounded($radius: 10px) {
+  border: solid 2px;
+  border-radius: $radius;
+}
