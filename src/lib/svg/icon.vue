@@ -1,25 +1,23 @@
 <template>
-    <svg :class="[conf.cssClass]" :viewBox="icon.box" v-html="icon.html"
-    ></svg>
+    <svg :class="[icon.css]" :viewBox="icon.box" v-html="icon.html"></svg>
 </template>
 
 <script>
 import {isString} from 'js/typeCheck'
-import {conf, vectors} from '../svg.config'
-import {Svg, Path} from './svg-kit'
+import {vectors} from './svg.config'
 export default {
     props: {
-        svg: {},
+        name: {type: String},
     },
 
     data(){return{
-        conf,
-        paths: isString(this.svg) ? [this.svg] : this.svg,
+        path: isString(this.name) ? this.name : null,
+        paths: Array.isArray(this.name) ? this.name : null,
         icon: null,
     }},
 
     beforeMount() {
-        this.icon = vectors[this.paths[0]];
+        this.icon = vectors[this.path];
     }
 }
 </script>
