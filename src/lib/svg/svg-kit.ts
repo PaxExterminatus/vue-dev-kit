@@ -13,12 +13,6 @@ export class Svg {
     }
 }
 
-export class SvgComples {
-    constructor({} : {}) {
-
-    }
-}
-
 class Path {
     path : string;
     constructor({css, d} : {css: string, d: string})

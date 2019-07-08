@@ -6,11 +6,13 @@
 import vectors from './vectors'
 export default {
     props: {
-        name: {type: String},
+        names: {type: Array},
     },
 
     data(){return{
-        icon: vectors[this.name],
+       icon: this.names.map( name => {
+           console.log(vectors[name]);
+       }),
     }},
 }
 </script>

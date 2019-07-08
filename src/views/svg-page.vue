@@ -8,7 +8,7 @@
     </div>
 
     <div class="rw">
-      <icon class="twitter-plus" :name="['twitter','plus']"/>
+      <icon-make class="twitter-plus" :names="['twitter','plus']"/>
     </div>
 
   </div>
@@ -16,7 +16,8 @@
 
 <script>
 import icon from 'svg/icon'
+import IconMake from "svg/icon-make";
 export default {
-  components: {icon}
+  components: {IconMake, icon}
 }
 </script>
