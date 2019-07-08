@@ -1,0 +1,12 @@
+.icon {
+  width: 48px;
+  height: 48px;
+}
+
+.icon.twitter {
+  border-radius: 50%;
+  background-color: #1da1f2;
+  .vector.twitter {
+    fill: #fff;
+  }
+}
