@@ -2,20 +2,16 @@
   <div class="page svg">
     <h1>Svg support</h1>
 
-    <section>
-      <h2>Single svg icon</h2>
-      <div class="rw">
-        <icon name="twitter"/>
-        <icon name="plus"/>
-      </div>
-    </section>
+    <h2>Single svg icon</h2>
+    <div class="rw">
+      <icon name="twitter"/>
+      <icon name="plus"/>
+    </div>
 
-    <section>
-      <h2>Complex svg icon</h2>
-      <div class="rw">
-        <icon class="twitter-plus" :name="['twitter','plus']"/>
-      </div>
-    </section>
+    <h2>Complex svg icon</h2>
+    <div class="rw">
+      <icon class="twitter-plus" :name="['twitter','plus']"/>
+    </div>
 
   </div>
 </template>
