@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/input">Input</router-link> |
+    <div id="nav" class="margin-child-right">
+      <router-link to="/">Home</router-link>
+      <router-link to="/input">Input</router-link>
       <router-link to="/svg">Svg</router-link>
+      <router-link to="/time">Time</router-link>
     </div>
     <router-view/>
   </div>

@@ -11,5 +11,6 @@ export default new Router({
     { path: '/', name: 'home', component: Home },
     { path: '/input', name: 'input', component: () => import('./views/Input.vue') },
     { path: '/svg', name: 'svg', component: () => import('./views/SvgPage.vue') },
+    { path: '/time', name: 'time', component: () => import('./views/TimePage.vue') },
   ]
 })
