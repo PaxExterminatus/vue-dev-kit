@@ -1,5 +1,5 @@
 // @ts-ignore
-import {conf} from './svg.config.js'
+import {conf} from '../config.js'
 
 export class Svg {
     css: string;

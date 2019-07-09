@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import vectors from './vectors'
-import {conf} from './svg.config'
+import {conf} from '../config'
+import vectors from '../vectors'
 export default {
     props: {
-        names: {type: Array},
+        name: {type: Array},
     },
 
     data(){return{
@@ -19,7 +19,7 @@ export default {
     beforeMount()
     {
         let maxsize = 0;
-        this.names.map( name => {
+        this.name.map( name => {
             const vector = vectors[name];
             if (vector.size > maxsize)
             {
