@@ -5,15 +5,15 @@
     <section>
       <h2>Single svg icon</h2>
       <div class="rw">
-        <ico name="twitter"/>
-        <ico name="plus"/>
+        <icon name="twitter"/>
+        <icon name="plus"/>
       </div>
     </section>
 
     <section>
       <h2>Complex svg icon</h2>
       <div class="rw">
-        <ico class="twitter-plus" :name="['twitter','plus']"/>
+        <icon class="twitter-plus" :name="['twitter','plus']"/>
       </div>
     </section>
 
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import ico from 'svg/ico'
+import icon from 'svg/icon'
 export default {
-  components: {ico}
+  components: {icon}
 }
 </script>

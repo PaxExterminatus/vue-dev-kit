@@ -10,6 +10,6 @@ export default new Router({
   routes: [
     { path: '/', name: 'home', component: Home },
     { path: '/input', name: 'input', component: () => import('./views/Input.vue') },
-    { path: '/svg', name: 'svg', component: () => import('./views/svg-page.vue') },
+    { path: '/svg', name: 'svg', component: () => import('./views/SvgPage.vue') },
   ]
 })

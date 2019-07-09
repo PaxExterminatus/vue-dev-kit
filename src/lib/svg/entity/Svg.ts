@@ -1,28 +1,24 @@
 // @ts-ignore
 import {conf} from '../config.js'
 
-export class Svg {
+export interface SvgInterface {
     css: string;
-    box: string;
-    html: string = '';
+    html: string;
     size: number;
-    constructor({css, size, path} : {css: string, size: number, path: string})
-    {
-        this.size = size;
-        this.css = `${conf.cssClass} ${css}`;
-        this.box = `0 0 ${size} ${size}`;
-        this.html += new Path({css: `${conf.cssClassVector} ${css}`, d: path});
-    }
 }
 
-class Path {
-    path : string;
-    constructor({css, d} : {css: string, d: string})
+export class Svg implements SvgInterface {
+    css: string;
+    size: number;
+    html: string;
+    constructor({css, size, html} : SvgInterface)
     {
-        this.path = `<path class="${css}" d="${d}"/>`;
+        this.size = size;
+        this.css = css;
+        this.html = `<path class="${conf.cssClassVector} ${css}" d="${html}"/>`;
     }
 
-    toString() : string {
-        return this.path;
+    get box() {
+        return `0 0 ${this.size} ${this.size}`;
     }
 }
