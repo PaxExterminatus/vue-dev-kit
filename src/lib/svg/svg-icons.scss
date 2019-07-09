@@ -10,3 +10,12 @@
     fill: #fff;
   }
 }
+
+.icon.twitter-plus {
+  border-radius: 50%;
+  background-color: #1da1f2;
+  fill: #fff;
+  .vector.plus {
+    transform: matrix(5.5, 0, 0, 5.5, 355, 355);
+  }
+}

@@ -16,7 +16,7 @@
 
 <script>
 import icon from 'svg/icon'
-import IconMake from "svg/icon-make";
+import IconMake from "svg/icons";
 export default {
   components: {IconMake, icon}
 }
