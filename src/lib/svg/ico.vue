@@ -1,7 +1,7 @@
 <script>
 import {isString} from 'js/typeCheck'
-import icon from './cmp/svg-icon'
-import icons from './cmp/svg-make'
+import icon from './cmp/icon'
+import icons from './cmp/icons'
 export default {
     props: {
         name: {}
@@ -31,7 +31,7 @@ export default {
                         name: this.name
                     }
                 }
-            )
+            );
         }
     }
 }
