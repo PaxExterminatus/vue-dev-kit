@@ -1,5 +1,5 @@
 // @ts-ignore
-import {conf} from '../config.js'
+import {conf} from './config.js'
 
 export interface SvgInterface {
     css: string;

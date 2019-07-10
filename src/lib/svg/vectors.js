@@ -1,4 +1,4 @@
-import {Svg} from "svg/entity/Svg";
+import {Svg} from "svg/svg-kit";
 
 export default {
     plus: new Svg({
