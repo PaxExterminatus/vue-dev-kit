@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <h1>Time and Date</h1>
-        <time-ago :dt="'2018-01-01'"></time-ago>
+        <time-ago :dt="'2018-11-23 14:55:33'"></time-ago>
     </div>
 </template>
 
