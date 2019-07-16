@@ -1,4 +1,4 @@
-import {utcToLocal} from './time/time-kit'
+import {utcToLocal, timeAgoView} from './time/time-kit'
 
 export const timeConfig = {
     format: {
@@ -7,5 +7,8 @@ export const timeConfig = {
     },
     convert: {
         input: utcToLocal,
-    }
+    },
+    timeAgo: {
+        view: timeAgoView,
+    },
 };
