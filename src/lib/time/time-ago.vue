@@ -3,14 +3,20 @@
 </template>
 
 <script>
-import moment from 'moment'
+import {timeConfig} from 'lb/time.config'
 export default {
     props: {
-        dt: {}
+        datetime: {}
     },
 
     computed: {
-        view(){
+        dt()
+        {
+          return !!timeConfig.convert.input ? timeConfig.convert.input(this.datetime) : this.datetime;
+        },
+
+        view()
+        {
             return this.dt;
         },
     },
