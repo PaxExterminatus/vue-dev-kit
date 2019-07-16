@@ -20,7 +20,7 @@ export default {
         },
 
         view() {
-            return !!timeConfig.timeAgo.view ? timeConfig.timeAgo.view(this.datetime) : this.datetime;
+            return !!timeConfig.timeAgo.view ? timeConfig.timeAgo.view(this.dt) : this.dt;
         },
     },
 }
