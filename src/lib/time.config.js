@@ -10,5 +10,6 @@ export const timeConfig = {
     },
     timeAgo: {
         view: timeAgoView,
+        format: 'DD MMMM, YYYY',
     },
 };

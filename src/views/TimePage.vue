@@ -21,7 +21,7 @@ export default {
     components: {timeAgo},
 
     data(){return{
-        utcDt: '2019-07-16 16:00:00',
+        utcDt: '2019-07-16 15:00:00',
     }},
 
     computed: {
