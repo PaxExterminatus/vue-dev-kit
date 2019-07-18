@@ -13,6 +13,7 @@ module.exports = {
             'lb': path.resolve(__dirname, './src/lib'),
             'js': path.resolve(__dirname, './src/lib/js'),
             'svg': path.resolve(__dirname, './src/lib/svg'),
+            'time': path.resolve(__dirname, './src/lib/time'),
         }
     },
 

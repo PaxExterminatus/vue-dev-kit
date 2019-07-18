@@ -5,3 +5,13 @@
     @include margin-child-right(15px);
   }
 }
+
+.flex-table {
+  display: flex;
+  & > * {
+    margin-right: 5px;
+    border: solid 1px #2c3e50;
+    padding: 5px;
+    text-align: left;
+  }
+}
