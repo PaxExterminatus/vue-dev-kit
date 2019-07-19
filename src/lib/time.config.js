@@ -1,5 +1,3 @@
-
-import {vMomentJs} from 'time/RelativeTime/RelativeTimeKit'
 import {RelativeTimeDisplayOpt} from 'time/RelativeTime/RelativeTimeDisplayOpt'
 
 export default {
@@ -9,7 +7,7 @@ export default {
     },
 
     relativeTimeDisplayOpt: new RelativeTimeDisplayOpt({
-        convert: v => v,
-        display: vMomentJs,
+        convert: t => t,
+        display: t => t,
     }),
 };
