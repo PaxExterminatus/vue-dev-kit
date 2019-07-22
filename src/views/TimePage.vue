@@ -24,7 +24,6 @@ import moment from 'moment'
 import RelativeTimeDisplay from 'time/RelativeTime/RelativeTimeDisplay'
 export default {
     components: {RelativeTimeDisplay},
-
     data(){return{
         dates: [
             moment().subtract(1,'s'),

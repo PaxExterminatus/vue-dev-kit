@@ -1,5 +1,5 @@
 import moment from 'moment'
-import {MomentInput, Moment} from 'moment'
+import {MomentInput} from 'moment'
 
 export function diff(params: TimeDifferenceArgs): TimeDifference {
     return new TimeDifference(params);
@@ -10,58 +10,80 @@ type TimeDifferenceArgs = {
 }
 
 export class TimeDifference {
+    second: number = 1000;
+    minute: number = this.second * 60;
+    hour:   number = this.minute * 60;
+    day:    number = this.hour   * 24;
+    month:  number = this.day    * 30;
+    year:   number = this.month  * 12;
+
     diff: number;
-    withDt: Moment;
-    compareDt: Moment;
-    constructor({compareDt, withDt} : TimeDifferenceArgs)
+    constructor({compareDt = moment.now(), withDt} : TimeDifferenceArgs)
     {
-        this.compareDt = moment(compareDt || moment.now());
-        this.withDt = moment(withDt);
-        this.diff = this.compareDt.diff(this.withDt);
+        const t1 = moment(compareDt || moment.now());
+        const t2 = moment(withDt);
+
+        this.diff = t1.diff(t2);
     }
 
-    display ({diff} : {diff : number}): string
+    get lessMinute(){
+        return this.diff < this.minute;
+    }
+    get lessHour(){
+        return this.diff < this.hour;
+    }
+    get lessDay(){
+        return this.diff < this.day;
+    }
+    get lessMonth(){
+        return this.diff < this.month;
+    }
+    get lessYear(){
+        return this.diff < this.year;
+    }
+
+    get vSecond(){
+        let v = Math.round(this.diff / this.second);
+        return  v > 1 ? `${v} seconds ago` : `${v} second ago`;
+    }
+    get vMinute(){
+        let v = Math.round(this.diff / this.minute);
+        return  v > 1 ? `${v} minutes ago` : `${v} minute ago`;
+    }
+    get vHour(){
+        let v = Math.round(this.diff / this.hour);
+        return  v > 1 ? `${v} hours ago` : `${v} hour ago`;
+    }
+    get vDay(){
+        let v = Math.round(this.diff / this.day);
+        return  v > 1 ? `${v} days ago` : `${v} day ago`;
+    }
+    get vMonth(){
+        let v = Math.round(this.diff / this.month);
+        return  v > 1 ? `${v} months ago` : `${v} month ago`;
+    }
+    get vYear(){
+        let v = Math.round(this.diff / this.year);
+        return  v > 1 ? `${v} years ago` : `${v} year ago`;
+    }
+
+    get display()
     {
-        const
-            second = 1000, minute = second * 60, hour = minute * 60,
-            day = hour * 24, month = day * 30, year = day * 365;
-
-        let v;
-
-        if (diff < minute)
-        {
-            v = Math.round(diff / second);
-            return `${v} seconds ago`;
-        }
-        else if (diff < hour)
-        {
-            v = Math.round(diff / minute );
-            return `${v} minutes ago`;
-        }
-        else if (diff < day)
-        {
-            v = Math.round(diff / hour );
-            return `${v} hours ago`;
-        }
-        else if (diff < month)
-        {
-            v = Math.round(diff / day );
-            return `${v} days ago`;
-        }
-        else if (diff < year)
-        {
-            v = Math.round(diff / month );
-            return `${v} months ago`;
-        }
-        else
-        {
-            v = Math.round(this.diff / year );
-            return `${v} years ago`;
-        }
+        if (this.lessMinute)
+            return this.vSecond;
+        if (this.lessHour)
+            return this.vMinute;
+        if (this.lessDay)
+            return this.vHour;
+        if (this.lessMonth)
+            return this.vDay;
+        if (this.lessYear)
+            return this.vMonth;
+        return this.vYear;
     }
 
     toString()
     {
-        return this.display({diff: this.diff});
+        return this.display;
     }
 }

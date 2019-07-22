@@ -5,7 +5,7 @@
 <script>
 import moment from 'moment';
 import conf from 'lb/time.config'
-import {TimeDifference, diff} from 'time/Time';
+import {diff} from 'time/Time';
 import {RelativeTimeDisplayOpt} from './RelativeTimeDisplayOpt';
 export default {
     props: {
