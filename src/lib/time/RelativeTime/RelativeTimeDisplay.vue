@@ -1,5 +1,5 @@
 <template>
-    <time class="time-ago" :datetime="dt">{{dt}} | {{relative}}</time>
+    <time class="time-ago" :datetime="dt">{{relative}}</time>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
     data(){return{
         time: moment,
         relative: diff({
-            withDt: moment(this.dt).add(30,'m'),
+            withDt: this.dt,
         })
     }},
 }
