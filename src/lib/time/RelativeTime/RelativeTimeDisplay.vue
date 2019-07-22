@@ -22,7 +22,7 @@ export default {
             return `${this.moment.format(this.opt.titleFormat)}`;
         },
         viewDatetime(){
-            return this.moment.format('YYYY-MM-DDTHH:mm:ssZ');
+            return this.moment.format(this.opt.datetimeFormat);
         }
     }
 }
