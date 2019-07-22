@@ -6,7 +6,8 @@ export function diff(params: TimeDifferenceArgs): TimeDifference {
 }
 
 type TimeDifferenceArgs = {
-    compareDt?: MomentInput, withDt: MomentInput
+    withInp: MomentInput
+    compareInp?: MomentInput,
 }
 
 export class TimeDifference {
@@ -18,12 +19,9 @@ export class TimeDifference {
     year:   number = this.month  * 12;
 
     diff: number;
-    constructor({compareDt = moment.now(), withDt} : TimeDifferenceArgs)
+    constructor({withInp, compareInp = moment.now()} : TimeDifferenceArgs)
     {
-        const t1 = moment(compareDt || moment.now());
-        const t2 = moment(withDt);
-
-        this.diff = t1.diff(t2);
+        this.diff = moment(compareInp).diff(moment(withInp));
     }
 
     get lessMinute(){

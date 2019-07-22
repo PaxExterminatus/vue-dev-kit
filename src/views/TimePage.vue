@@ -10,7 +10,7 @@
                         {{dt.format('YYYY.MM.DD HH:mm:ss')}}
                     </td>
                     <td>
-                        <relative-time-display :dt="dt"/>
+                        <relative-time-display :date="dt"/>
                     </td>
                 </tr>
             </table>

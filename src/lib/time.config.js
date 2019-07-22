@@ -1,4 +1,4 @@
-import {RelativeTimeDisplayOpt} from 'time/RelativeTime/RelativeTimeDisplayOpt'
+import {RelativeTimeDisplayOpt} from 'time/RelativeTime/RelativeTimeDisplayKit'
 
 export default {
     format: {
@@ -7,7 +7,7 @@ export default {
     },
 
     relativeTimeDisplayOpt: new RelativeTimeDisplayOpt({
-        convert: t => t,
-        display: t => t,
+        titleFormat: '[Created] DD MMMM, YYYY [at] HH:mm:ss',
+        datetimeFormat: 'YYYY-MM-DDTHH:mm:ssZ',
     }),
 };
