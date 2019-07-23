@@ -105,20 +105,34 @@ export class TimeExpression implements TimeDisplay {
         this.moment = moment(inp);
     }
 
-    get yesterday() {
-        return this.moment.isSame(moment().subtract(1,'d'));
+    get yesterday(){
+        return this.moment.isSame(moment().subtract(1,'d'),'d');
+    }
+    get today(){
+        return this.moment.isSame(moment(),'d');
+    }
+    get tomorrow(){
+        return this.moment.isSame(moment().add(1,'d'),'d');
     }
 
-    get vYesterday() : string {
+    get vYesterday(){
         return 'yesterday'
     }
-
-    get display() {
-        if (this.yesterday) return this.vYesterday;
-        return 'HZ'
+    get vToday(){
+        return 'today'
+    }
+    get vTomorrow(){
+        return 'tomorrow'
     }
 
-    toString() {
+    get display(){
+        if (this.yesterday) return this.vYesterday;
+        if (this.today) return this.vToday;
+        if (this.tomorrow) return this.vTomorrow;
+        return new TimeDifference({withInp: this.moment}).display;
+    }
+
+    toString(){
         return this.display;
     }
 }

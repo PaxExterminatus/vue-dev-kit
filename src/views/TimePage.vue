@@ -13,9 +13,25 @@
 
                 <table>
                     <tr>
-                    <td>{{expression.yesterday.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                    <td><time-expression :date="expression.yesterday"/></td>
-                </tr>
+                        <td>{{expression.theDayBeforeYesterday.format('YYYY.MM.DD')}}</td>
+                        <td><time-expression :date="expression.theDayBeforeYesterday"/></td>
+                    </tr>
+                    <tr>
+                        <td>{{expression.yesterday.format('YYYY.MM.DD')}}</td>
+                        <td><time-expression :date="expression.yesterday"/></td>
+                    </tr>
+                    <tr>
+                        <td>{{expression.today.format('YYYY.MM.DD')}}</td>
+                        <td><time-expression :date="expression.today"/></td>
+                    </tr>
+                    <tr>
+                        <td>{{expression.tomorrow.format('YYYY.MM.DD')}}</td>
+                        <td><time-expression :date="expression.tomorrow"/></td>
+                    </tr>
+                    <tr>
+                        <td>{{expression.theDayAfterTomorrow.format('YYYY.MM.DD')}}</td>
+                        <td><time-expression :date="expression.theDayAfterTomorrow"/></td>
+                    </tr>
                 </table>
             </div>
 
@@ -47,7 +63,11 @@ export default {
         ],
 
         expression: {
+            theDayBeforeYesterday: moment().subtract(2,'d'),
             yesterday: moment().subtract(1,'d'),
+            today: moment(),
+            tomorrow: moment().add(1,'d'),
+            theDayAfterTomorrow: moment().add(2,'d'),
         }
     }},
 }
