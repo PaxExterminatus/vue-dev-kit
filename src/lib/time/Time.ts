@@ -1,16 +1,25 @@
-import moment from 'moment'
+import moment, {Moment} from 'moment'
 import {MomentInput} from 'moment'
 
 export function diff(params: TimeDifferenceArgs): TimeDifference {
-    return new TimeDifference(params);
+    return new TimeDifference(params)
+}
+export function  exp(params: TimeExpressionArgs): TimeExpression {
+    return new TimeExpression(params)
 }
 
 type TimeDifferenceArgs = {
+    compareInp?: MomentInput
     withInp: MomentInput
-    compareInp?: MomentInput,
 }
 
-export class TimeDifference {
+export interface TimeDisplay {
+    moment: Moment,
+    readonly display: string
+    toString(): string
+}
+
+export class TimeDifference implements TimeDisplay {
     second: number = 1000;
     minute: number = this.second * 60;
     hour:   number = this.minute * 60;
@@ -19,8 +28,10 @@ export class TimeDifference {
     year:   number = this.month  * 12;
 
     diff: number;
-    constructor({withInp, compareInp = moment.now()} : TimeDifferenceArgs)
-    {
+
+    moment: Moment;
+    constructor({withInp, compareInp = moment.now()} : TimeDifferenceArgs){
+        this.moment = moment(withInp);
         this.diff = moment(compareInp).diff(moment(withInp));
     }
 
@@ -80,8 +91,34 @@ export class TimeDifference {
         return this.vYear;
     }
 
-    toString()
-    {
+    toString() {
+        return this.display;
+    }
+}
+export type TimeExpressionArgs = {
+    inp: MomentInput,
+}
+
+export class TimeExpression implements TimeDisplay {
+    moment: Moment;
+    constructor({inp} : TimeExpressionArgs){
+        this.moment = moment(inp);
+    }
+
+    get yesterday() {
+        return this.moment.isSame(moment().subtract(1,'d'));
+    }
+
+    get vYesterday() : string {
+        return 'yesterday'
+    }
+
+    get display() {
+        if (this.yesterday) return this.vYesterday;
+        return 'HZ'
+    }
+
+    toString() {
         return this.display;
     }
 }

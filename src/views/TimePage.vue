@@ -4,16 +4,21 @@
 
         <section>
             <h2>Relative time display</h2>
-            <table>
-                <tr v-for="dt of dates">
-                    <td>
-                        {{dt.format('YYYY.MM.DD HH:mm:ss')}}
-                    </td>
-                    <td>
-                        <relative-time-display :date="dt"/>
-                    </td>
+            <div class="flex-row">
+
+                <table><tr v-for="dt of dates">
+                    <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                    <td><time-diff :compare="moment()" :with="dt"/></td></tr>
+                </table>
+
+                <table>
+                    <tr>
+                    <td>{{expression.yesterday.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                    <td><time-expression :date="expression.yesterday"/></td>
                 </tr>
-            </table>
+                </table>
+            </div>
+
         </section>
 
     </div>
@@ -21,10 +26,13 @@
 
 <script>
 import moment from 'moment'
-import RelativeTimeDisplay from 'time/RelativeTime/RelativeTimeDisplay'
+import TimeDiff from 'time/TimeDisplay/TimeDiff'
+import TimeExpression from 'time/TimeDisplay/TimeExpression'
 export default {
-    components: {RelativeTimeDisplay},
+    components: {TimeDiff,TimeExpression},
     data(){return{
+       moment,
+
         dates: [
             moment().subtract(1,'s'),
             moment().subtract(22,'s'),
@@ -37,6 +45,10 @@ export default {
             moment().subtract(1,'y'),
             moment().subtract(12,'y'),
         ],
+
+        expression: {
+            yesterday: moment().subtract(1,'d'),
+        }
     }},
 }
 </script>
