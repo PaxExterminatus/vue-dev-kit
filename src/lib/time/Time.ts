@@ -20,12 +20,6 @@ export interface TimeDisplay {
 }
 
 export class TimeDifference implements TimeDisplay {
-    second: number = 1000;
-    minute: number = this.second * 60;
-    hour:   number = this.minute * 60;
-    day:    number = this.hour   * 24;
-    month:  number = this.day    * 30;
-    year:   number = this.month  * 12;
     diff: number;
     moment: Moment;
     constructor({withInp, compareInp = moment.now()} : TimeDifferenceArgs){
@@ -35,6 +29,13 @@ export class TimeDifference implements TimeDisplay {
 
     get display()
     {
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+        const month = day * 30;
+        const year = month * 12;
+
         let diff = this.diff;
         let display : TimeDifferenceDisplay;
 
@@ -46,17 +47,17 @@ export class TimeDifference implements TimeDisplay {
             display = new DisplayFuture();
         }
 
-        if (diff < this.minute)
-            return display.vSecond(Math.round(diff / this.second));
-        if (diff < this.hour)
-            return display.vMinute(Math.round(diff / this.minute));
-        if (diff < this.day)
-            return display.vHour(Math.round(diff / this.hour));
-        if (diff < this.month)
-            return display.vDay(Math.round(diff / this.day));
-        if (diff < this.year)
-            return display.vMonth(Math.round(diff / this.month));
-        return display.vYear(Math.round(diff / this.year));
+        if (diff < minute)
+            return display.vSecond(Math.round(diff / second));
+        if (diff < hour)
+            return display.vMinute(Math.round(diff / minute));
+        if (diff < day)
+            return display.vHour(Math.round(diff / hour));
+        if (diff < month)
+            return display.vDay(Math.round(diff / day));
+        if (diff < year)
+            return display.vMonth(Math.round(diff / month));
+        return display.vYear(Math.round(diff / year));
     }
 
     toString() {
