@@ -6,31 +6,19 @@
             <h2>Relative time display</h2>
             <div class="flex-row">
 
-                <table><tr v-for="dt of dates">
-                    <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                    <td><time-diff :compare="moment()" :with="dt"/></td></tr>
+                <table>
+                    <caption>Time Difference</caption>
+                    <tr v-for="dt of difference">
+                        <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                        <td><time-diff :compare="moment()" :with="dt"/></td>
+                    </tr>
                 </table>
 
                 <table>
-                    <tr>
-                        <td>{{expression.theDayBeforeYesterday.format('YYYY.MM.DD')}}</td>
-                        <td><time-expression :date="expression.theDayBeforeYesterday"/></td>
-                    </tr>
-                    <tr>
-                        <td>{{expression.yesterday.format('YYYY.MM.DD')}}</td>
-                        <td><time-expression :date="expression.yesterday"/></td>
-                    </tr>
-                    <tr>
-                        <td>{{expression.today.format('YYYY.MM.DD')}}</td>
-                        <td><time-expression :date="expression.today"/></td>
-                    </tr>
-                    <tr>
-                        <td>{{expression.tomorrow.format('YYYY.MM.DD')}}</td>
-                        <td><time-expression :date="expression.tomorrow"/></td>
-                    </tr>
-                    <tr>
-                        <td>{{expression.theDayAfterTomorrow.format('YYYY.MM.DD')}}</td>
-                        <td><time-expression :date="expression.theDayAfterTomorrow"/></td>
+                    <caption>Time Expression</caption>
+                    <tr v-for="dt of expression">
+                        <td>{{dt.format('YYYY.MM.DD')}}</td>
+                        <td><time-expression :date="dt"/></td>
                     </tr>
                 </table>
             </div>
@@ -49,7 +37,11 @@ export default {
     data(){return{
        moment,
 
-        dates: [
+        difference: [
+            moment().subtract(1,'d'),
+            moment().subtract(2,'d'),
+            moment().add(1,'d'),
+            moment().add(2,'d'),
             moment().subtract(1,'s'),
             moment().subtract(22,'s'),
             moment().subtract(1,'m'),
@@ -62,13 +54,12 @@ export default {
             moment().subtract(12,'y'),
         ],
 
-        expression: {
-            theDayBeforeYesterday: moment().subtract(2,'d'),
-            yesterday: moment().subtract(1,'d'),
-            today: moment(),
-            tomorrow: moment().add(1,'d'),
-            theDayAfterTomorrow: moment().add(2,'d'),
-        }
+        expression: [
+            moment().subtract(1,'d'),
+            moment().subtract(2,'d'),
+            moment().add(1,'d'),
+            moment().add(2,'d'),
+        ]
     }},
 }
 </script>
