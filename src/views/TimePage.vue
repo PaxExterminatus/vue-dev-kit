@@ -30,8 +30,8 @@
 
 <script>
 import moment from 'moment'
-import TimeDiff from 'time/TimeDisplay/TimeDiff'
-import TimeExpression from 'time/TimeDisplay/TimeExpression'
+import TimeDiff from 'time/TimeDisplay/component/TimeDiff'
+import TimeExpression from 'time/TimeDisplay/component/TimeExpression'
 export default {
     components: {TimeDiff,TimeExpression},
     data(){return{

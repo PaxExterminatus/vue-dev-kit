@@ -1,4 +1,4 @@
-import {TimeDisplay} from '../Time'
+import {TimeDisplay} from '../TimeDisplay'
 
 export type TimeExpressionViewOptType = {
     titleFormat: string;

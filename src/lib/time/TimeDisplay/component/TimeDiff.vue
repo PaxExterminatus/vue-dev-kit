@@ -4,7 +4,7 @@
 
 <script>
 import {diff} from 'time/Time';
-import TimeDisplay from "time/TimeDisplay/TimeDisplay";
+import TimeDisplay from "time/TimeDisplay/component/TimeDisplay";
 export default {
     components: {TimeDisplay},
 
