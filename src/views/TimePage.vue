@@ -15,17 +15,9 @@
                 </table>
 
                 <table>
-                    <caption>Time Expression</caption>
-                    <tr v-for="dt of expression">
-                        <td>{{dt.format('YYYY.MM.DD')}}</td>
-                        <td><time-expression :date="dt"/></td>
-                    </tr>
-                </table>
-
-                <table>
                     <caption>Time Display</caption>
                     <tr v-for="dt of difference">
-                        <td>{{dt.format('YYYY.MM.DD')}}</td>
+                        <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
                         <td><time-expression2 :date="dt"/></td>
                     </tr>
                 </table>
