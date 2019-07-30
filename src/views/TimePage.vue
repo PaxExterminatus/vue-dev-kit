@@ -21,6 +21,14 @@
                         <td><time-expression :date="dt"/></td>
                     </tr>
                 </table>
+
+                <table>
+                    <caption>Time Display</caption>
+                    <tr v-for="dt of difference">
+                        <td>{{dt.format('YYYY.MM.DD')}}</td>
+                        <td><time-expression2 :date="dt"/></td>
+                    </tr>
+                </table>
             </div>
 
         </section>
@@ -32,8 +40,9 @@
 import moment from 'moment'
 import TimeDiff from 'time/TimeDisplay/component/TimeDiff'
 import TimeExpression from 'time/TimeDisplay/component/TimeExpression'
+import TimeExpression2 from 'time/TimeExpression/time-expression'
 export default {
-    components: {TimeDiff,TimeExpression},
+    components: {TimeDiff,TimeExpression,TimeExpression2},
     data(){return{
        moment,
 
