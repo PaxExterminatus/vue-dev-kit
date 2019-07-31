@@ -1,5 +1,4 @@
-import moment from 'moment'
-import {MomentInput,Moment,unitOfTime} from 'moment'
+import moment, {MomentInput, Moment} from 'moment'
 import {TimeDisplay,TimeExpressionClass} from './TimeDisplay'
 
 export abstract class TimeExpression {

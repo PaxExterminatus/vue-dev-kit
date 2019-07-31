@@ -56,7 +56,7 @@
 import moment from 'moment'
 import TimeExpression from 'time/TimeExpression'
 import {ExpressionPastDiff,ExpressionFutureDiff} from 'time/TimeExpression/TimeExpression'
-import {ExpressionDay,ExpressionWeek,ExpressionMonth} from 'time/TimeExpression/TimePositions'
+import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth} from 'time/TimeExpression/TimePositions'
 export default {
     components: {TimeExpression},
     data(){return{
@@ -95,10 +95,10 @@ export default {
             moment(),
             moment().add(30,'d'),
         ],
-        expressionsDay: [ExpressionDay],
-        expressionsWeek: [ExpressionWeek],
-        expressionsMonth: [ExpressionMonth],
-        expressionsWeekAndDay: [ExpressionDay,ExpressionWeek,ExpressionMonth,ExpressionFutureDiff,ExpressionPastDiff],
+        expressionsDay: [ExpressionWithinDay],
+        expressionsWeek: [ExpressionWithinWeek],
+        expressionsMonth: [ExpressionWithinMonth],
+        expressionsWeekAndDay: [ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionFutureDiff,ExpressionPastDiff],
     }},
 }
 </script>
