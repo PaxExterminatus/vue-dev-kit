@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import {TimeDisplay} from 'time/TimeExpression/TimeDisplay'
-import {ExpressionPastDiff,ExpressionFutureDiff} from 'time/TimeExpression/TimeExpression'
+import {TimeDisplay} from 'time/TimeDisplay/TimeDisplay'
+import {ExpressionPastDiff,ExpressionFutureDiff} from 'time/TimeDisplay/TimeExpression'
 export default
 {
     props: {
