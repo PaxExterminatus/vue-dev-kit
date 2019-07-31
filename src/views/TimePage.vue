@@ -1,43 +1,37 @@
 <template>
     <div class="home">
         <h1>Time and date</h1>
-
         <section>
             <h2>Relative time display</h2>
             <div class="flex-row">
-
                 <table>
-                    <caption>Time Difference</caption>
+                    <caption>Time Default Expressions</caption>
                     <tr v-for="dt of difference">
                         <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                        <td><time-diff :compare="moment()" :with="dt"/></td>
+                        <td><time-expression :date="dt"/></td>
                     </tr>
                 </table>
 
                 <table>
-                    <caption>Time Display</caption>
+                    <caption>Time Display Day Expressions</caption>
                     <tr v-for="dt of difference">
                         <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                        <td><time-expression2 :date="dt"/></td>
+                        <td><time-expression :date="dt" :expressions="expressionsDay"/></td>
                     </tr>
                 </table>
             </div>
-
         </section>
-
     </div>
 </template>
 
 <script>
 import moment from 'moment'
-import TimeDiff from 'time/TimeDisplay/component/TimeDiff'
-import TimeExpression from 'time/TimeDisplay/component/TimeExpression'
-import TimeExpression2 from 'time/TimeExpression/time-expression'
+import TimeExpression from 'time/TimeExpression'
+import {ExpressionPastDiff,ExpressionFutureDiff,ExpressionDay} from 'time/TimeExpression/TimeExpression'
 export default {
-    components: {TimeDiff,TimeExpression,TimeExpression2},
+    components: {TimeExpression},
     data(){return{
-       moment,
-
+        moment,
         difference: [
             moment().subtract(1,'d'),
             moment().subtract(2,'d'),
@@ -54,13 +48,7 @@ export default {
             moment().subtract(1,'y'),
             moment().subtract(12,'y'),
         ],
-
-        expression: [
-            moment().subtract(1,'d'),
-            moment().subtract(2,'d'),
-            moment().add(1,'d'),
-            moment().add(2,'d'),
-        ]
+        expressionsDay: [ExpressionDay, ExpressionFutureDiff, ExpressionPastDiff],
     }},
 }
 </script>

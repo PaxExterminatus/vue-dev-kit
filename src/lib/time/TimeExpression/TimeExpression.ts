@@ -1,8 +1,8 @@
 import moment from 'moment'
 import {MomentInput,Moment} from 'moment'
+import {TimeDisplay,TimeExpressionClass} from './TimeDisplay'
 
-abstract class TimeExpression
-{
+export abstract class TimeExpression {
     readonly second = 1000;
     readonly minute = this.second * 60;
     readonly hour   = this.minute * 60;
@@ -20,14 +20,14 @@ abstract class TimeExpression
     abstract display() : string | undefined
 }
 
-export class DayExpression extends TimeExpression {
+export class ExpressionDay extends TimeExpression {
     display(): string | undefined {
         if (this.moment.isSame(moment(),'d')) return 'today';
         if (this.moment.isSame(moment().subtract(1,'d'),'d')) return 'yesterday';
         if (this.moment.isSame(moment().add(1,'d'),'d')) return 'tomorrow';
     }
 }
-export class PastSecondsExpression extends TimeExpression {
+export class ExpressionPastSeconds extends TimeExpression {
     display() {
         if (this.diff < this.minute)
         {
@@ -36,7 +36,7 @@ export class PastSecondsExpression extends TimeExpression {
         }
     }
 }
-export class PastMinutesExpression extends TimeExpression {
+export class ExpressionPastMinutes extends TimeExpression {
     display() {
         if (this.diff < this.hour) {
             const v = Math.round(this.diff / this.minute);
@@ -44,7 +44,7 @@ export class PastMinutesExpression extends TimeExpression {
         }
     }
 }
-export class PastHoursExpression extends TimeExpression {
+export class ExpressionPastHours extends TimeExpression {
     display() {
         if (this.diff < this.day) {
             const v = Math.round(this.diff / this.hour);
@@ -52,7 +52,7 @@ export class PastHoursExpression extends TimeExpression {
         }
     }
 }
-export class PastDaysExpression extends TimeExpression {
+export class ExpressionPastDays extends TimeExpression {
     display() {
         if (this.diff < this.month) {
             const v = Math.round(this.diff / this.day);
@@ -60,7 +60,7 @@ export class PastDaysExpression extends TimeExpression {
         }
     }
 }
-export class PastMonthsExpression extends TimeExpression {
+export class ExpressionPastMonths extends TimeExpression {
     display() {
         if (this.diff < this.year) {
             const v = Math.round(this.diff / this.month);
@@ -68,7 +68,7 @@ export class PastMonthsExpression extends TimeExpression {
         }
     }
 }
-export class PastYearsExpression extends TimeExpression {
+export class ExpressionPastYears extends TimeExpression {
     display() {
         if (this.diff >= this.year) {
             const v = Math.round(this.diff / this.year);
@@ -77,42 +77,56 @@ export class PastYearsExpression extends TimeExpression {
     }
 }
 
-
-interface TimeExpressionClass {
-    new (inp: MomentInput): TimeExpression;
-}
-
-const defaultTimeExpressionsList : TimeExpressionClass[] = [
-    PastSecondsExpression,
-    PastMinutesExpression,
-    PastHoursExpression,
-    PastDaysExpression,
-    PastMonthsExpression,
-    PastYearsExpression,
-    DayExpression,
-];
-
-declare type TimeDisplayArgs = {
-    inp: MomentInput
-    expressions?: TimeExpressionClass[]
-}
-
-export class TimeDisplay
-{
-    moment : Moment;
-    expressions : TimeExpressionClass[];
-    constructor({inp, expressions = defaultTimeExpressionsList} : TimeDisplayArgs)
+export class ExpressionFutureDiff extends TimeExpression {
+    display(): string | undefined
     {
-        this.moment = moment(inp);
-        this.expressions = expressions;
-    }
-
-    get display()
-    {
-        for (let ExpressionClass of this.expressions)
+        let v : number, diff = this.diff;
+        if (diff < 0)
         {
-            const display = new ExpressionClass(this.moment).display();
-            if (display) return display;
+            diff = Math.abs(diff);
+            if (diff < this.minute)
+            {
+                v = Math.round(diff / this.second);
+                return v > 1 ? `in ${v} seconds` : `in ${v} second`
+            }
+            if (diff < this.hour)
+            {
+                v = Math.round(diff / this.minute);
+                return v > 1 ? `after ${v} minutes` : `after ${v} minute`
+            }
+            if (diff < this.day)
+            {
+                v = Math.round(diff / this.hour);
+                return v > 1 ? `after ${v} hours` : `after ${v} hour`
+            }
+            if (diff < this.month)
+            {
+                v = Math.round(diff / this.day);
+                return v > 1 ? `after ${v} days` : `after ${v} day`
+            }
+            if (diff < this.year)
+            {
+                v = Math.round(diff / this.month);
+                return v > 1 ? `after ${v} months` : `after ${v} month`
+            }
+            v = Math.round(diff / this.year);
+            return v > 1 ? `after ${v} years` : `after ${v} year`
         }
+    }
+}
+
+export class ExpressionPastDiff extends TimeExpression
+{
+    display(): string | undefined
+    {
+        const expressions : TimeExpressionClass[] = [
+            ExpressionPastSeconds,
+            ExpressionPastMinutes,
+            ExpressionPastHours,
+            ExpressionPastDays,
+            ExpressionPastMonths,
+            ExpressionPastYears,
+        ];
+        return new TimeDisplay({inp: this.moment, expressions}).display;
     }
 }
