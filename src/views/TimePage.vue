@@ -38,8 +38,6 @@
                     </table>
                 </div>
 
-
-
                 <table>
                     <caption>Day, Week, Month</caption>
                     <tr v-for="dt of difference">
