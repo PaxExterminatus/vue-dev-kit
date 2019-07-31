@@ -20,44 +20,6 @@ export abstract class TimeExpression {
     abstract display() : string | undefined
 }
 
-abstract class ExpressionStartOf extends TimeExpression {
-    startOfUnit(unit : unitOfTime.StartOf)
-    {
-        if (moment().startOf(unit).subtract(1,'d').isSame(this.moment, unit)) {
-            return 'last'
-        }
-        if (moment().startOf(unit).isSame(this.moment, unit)) {
-            return 'this'
-        }
-        if (moment().endOf(unit).add(1,'d').isSame(this.moment, unit)) {
-            return 'next'
-        }
-    }
-}
-
-export class ExpressionWeek extends ExpressionStartOf {
-    display(): string | undefined {
-        const limit = this.startOfUnit('week');
-        if (limit === 'last') return 'last week';
-        if (limit === 'this') return 'this week';
-        if (limit === 'next') return 'next week';
-    }
-}
-export class ExpressionMonth extends ExpressionStartOf {
-    display(): string | undefined {
-        const limit = this.startOfUnit('month');
-        if (limit === 'last') return 'last month';
-        if (limit === 'this') return 'this month';
-        if (limit === 'next') return 'next month';
-    }
-}
-export class ExpressionDay extends TimeExpression {
-    display(): string | undefined {
-        if (this.moment.isSame(moment(),'d')) return 'today';
-        if (this.moment.isSame(moment().subtract(1,'d'),'d')) return 'yesterday';
-        if (this.moment.isSame(moment().add(1,'d'),'d')) return 'tomorrow';
-    }
-}
 export class ExpressionPastSeconds extends TimeExpression {
     display() {
         if (this.diff < this.minute)

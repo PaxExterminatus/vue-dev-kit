@@ -12,21 +12,33 @@
                     </tr>
                 </table>
 
-                <table>
-                    <caption>Day Expressions</caption>
-                    <tr v-for="dt of difference">
-                        <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                        <td><time-expression :date="dt" :expressions="expressionsDay"/></td>
-                    </tr>
-                </table>
+                <div>
+                    <h4>Day expressions</h4>
+                    <table>
+                        <tr v-for="dt of days">
+                            <td>{{dt.format('YYYY.MM.DD')}}</td>
+                            <td><time-expression :date="dt" :expressions="expressionsDay"/></td>
+                        </tr>
+                    </table>
 
-                <table>
-                    <caption>Week Expressions</caption>
-                    <tr v-for="dt of difference">
-                        <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                        <td><time-expression :date="dt" :expressions="expressionsWeek"/></td>
-                    </tr>
-                </table>
+                    <h4>Week expressions</h4>
+                    <table>
+                        <tr v-for="dt of weeks">
+                            <td>{{dt.format('YYYY.MM.DD')}}</td>
+                            <td><time-expression :date="dt" :expressions="expressionsWeek"/></td>
+                        </tr>
+                    </table>
+
+                    <h4>Month expressions</h4>
+                    <table>
+                        <tr v-for="dt of month">
+                            <td>{{dt.format('YYYY.MM.DD')}}</td>
+                            <td><time-expression :date="dt" :expressions="expressionsMonth"/></td>
+                        </tr>
+                    </table>
+                </div>
+
+
 
                 <table>
                     <caption>Day, Week, Month</caption>
@@ -43,7 +55,8 @@
 <script>
 import moment from 'moment'
 import TimeExpression from 'time/TimeExpression'
-import {ExpressionPastDiff,ExpressionFutureDiff,ExpressionDay,ExpressionWeek,ExpressionMonth} from 'time/TimeExpression/TimeExpression'
+import {ExpressionPastDiff,ExpressionFutureDiff} from 'time/TimeExpression/TimeExpression'
+import {ExpressionDay,ExpressionWeek,ExpressionMonth} from 'time/TimeExpression/TimePositions'
 export default {
     components: {TimeExpression},
     data(){return{
@@ -67,8 +80,24 @@ export default {
             moment().subtract(1,'y'),
             moment().subtract(12,'y'),
         ],
-        expressionsDay: [ExpressionDay,ExpressionFutureDiff,ExpressionPastDiff],
-        expressionsWeek: [ExpressionWeek,ExpressionFutureDiff, ExpressionPastDiff],
+        days: [
+            moment().subtract(1,'d'),
+            moment(),
+            moment().add(1,'d'),
+        ],
+        weeks: [
+            moment().subtract(7,'d'),
+            moment(),
+            moment().add(7,'d'),
+        ],
+        month: [
+            moment().subtract(31,'d'),
+            moment(),
+            moment().add(30,'d'),
+        ],
+        expressionsDay: [ExpressionDay],
+        expressionsWeek: [ExpressionWeek],
+        expressionsMonth: [ExpressionMonth],
         expressionsWeekAndDay: [ExpressionDay,ExpressionWeek,ExpressionMonth,ExpressionFutureDiff,ExpressionPastDiff],
     }},
 }
