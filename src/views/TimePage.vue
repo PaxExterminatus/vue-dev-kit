@@ -44,6 +44,14 @@
                             <td><time-expression :date="dt" :expressions="expressionsMonth"/></td>
                         </tr>
                     </table>
+
+                    <h4>Year expressions</h4>
+                    <table>
+                        <tr v-for="dt of year">
+                            <td>{{dt.format('YYYY.MM.DD')}}</td>
+                            <td><time-expression :date="dt" :expressions="expressionsYear"/></td>
+                        </tr>
+                    </table>
                 </div>
 
                 <table>
@@ -61,7 +69,7 @@
 <script>
 import moment from 'moment'
 import TimeExpression from 'time/TimeExpression'
-import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth} from 'time/TimeDisplay/TimeInterval'
+import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeDisplay/TimeInterval'
 import {TimeDiffPast} from 'time/TimeDisplay/TimeDiffPast'
 import {TimeDiffFuture} from 'time/TimeDisplay/TimeDiffFuture'
 export default {
@@ -117,11 +125,17 @@ export default {
             moment(),
             moment().add(31,'d'),
         ],
+        year: [
+            moment().subtract(1,'y'),
+            moment(),
+            moment().add(1,'y'),
+        ],
         expressionsPast: [TimeDiffPast],
         expressionsFuture: [TimeDiffFuture],
         expressionsDay: [ExpressionWithinDay],
         expressionsWeek: [ExpressionWithinWeek],
         expressionsMonth: [ExpressionWithinMonth],
+        expressionsYear: [ExpressionWithinYear],
         expressionsWeekAndDay: [ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,TimeDiffFuture,TimeDiffPast],
     }},
 }

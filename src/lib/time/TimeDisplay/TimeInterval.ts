@@ -42,3 +42,11 @@ export class ExpressionWithinMonth extends TimeExpressionInterval {
         if (position === 'next') return 'next month';
     }
 }
+export class ExpressionWithinYear extends TimeExpressionInterval {
+    display() {
+        const position = this.interval('year');
+        if (position === 'last') return 'last year';
+        if (position === 'this') return 'this year';
+        if (position === 'next') return 'next year';
+    }
+}
