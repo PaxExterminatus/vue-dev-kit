@@ -5,10 +5,18 @@
             <h2>Relative time display</h2>
             <div class="flex-row">
                 <table>
-                    <caption>Diff Expressions</caption>
-                    <tr v-for="dt of difference">
+                    <caption>Past Expressions</caption>
+                    <tr v-for="dt of past">
                         <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                        <td><time-expression :date="dt"/></td>
+                        <td><time-expression :date="dt" :expressions="expressionsPast"/></td>
+                    </tr>
+                </table>
+
+                <table>
+                    <caption>Future Expressions</caption>
+                    <tr v-for="dt of future">
+                        <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                        <td><time-expression :date="dt" :expressions="expressionsFuture"/></td>
                     </tr>
                 </table>
 
@@ -60,24 +68,39 @@ export default {
     components: {TimeExpression},
     data(){return{
         moment,
-        difference: [
-            moment().subtract(1,'d'),
-            moment().subtract(2,'d'),
-            moment().subtract(7,'d'),
-            moment().add(1,'d'),
-            moment().add(2,'d'),
-            moment().add(7,'d'),
+        past: [
             moment().subtract(1,'s'),
             moment().subtract(22,'s'),
+            moment().subtract(1,'d'),
+            moment().subtract(2,'d'),
             moment().subtract(1,'m'),
             moment().subtract(33,'m'),
             moment().subtract(1,'h'),
             moment().subtract(10,'h'),
             moment().subtract(1,'M'),
-            moment().add(1,'M'),
             moment().subtract(11,'M'),
             moment().subtract(1,'y'),
             moment().subtract(12,'y'),
+        ],
+        future: [
+            moment().add(1,'s'),
+            moment().add(22,'s'),
+            moment().add(1,'d'),
+            moment().add(7,'d'),
+            moment().add(1,'m'),
+            moment().add(33,'m'),
+            moment().add(1,'h'),
+            moment().add(10,'h'),
+            moment().add(1,'M'),
+            moment().add(11,'M'),
+            moment().add(1,'y'),
+            moment().add(12,'y'),
+        ],
+        difference: [
+            moment().add(1,'d'),
+            moment().add(2,'d'),
+            moment().add(7,'d'),
+            moment().add(1,'M'),
         ],
         days: [
             moment().subtract(1,'d'),
@@ -94,6 +117,8 @@ export default {
             moment(),
             moment().add(31,'d'),
         ],
+        expressionsPast: [TimeDiffPast],
+        expressionsFuture: [TimeDiffFuture],
         expressionsDay: [ExpressionWithinDay],
         expressionsWeek: [ExpressionWithinWeek],
         expressionsMonth: [ExpressionWithinMonth],
