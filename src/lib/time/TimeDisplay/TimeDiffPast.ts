@@ -1,10 +1,9 @@
-import {TimeExpression} from "./TimeExpression"
-import {TimeDisplay, TimeExpressionClass} from "@/lib/time/TimeDisplay/TimeDisplay";
+import {TimeExpression,TimeExpressionClass} from './TimeExpression'
+import {TimeDisplay} from './TimeDisplay';
 
 export class TimeDiffPastSeconds extends TimeExpression {
     display() {
-        if (this.diff < this.minute)
-        {
+        if (this.diff < this.minute) {
             const v = Math.round(this.diff / this.second);
             return v > 1 ? `${v} seconds ago` : `${v} second ago`
         }
@@ -46,15 +45,13 @@ export class TimeDiffPastYears extends TimeExpression {
     display() {
         if (this.diff >= this.year) {
             const v = Math.round(this.diff / this.year);
-            return v > 1 ? `${v} years ago`   : `${v} year ago`
+            return v > 1 ? `${v} years ago` : `${v} year ago`
         }
     }
 }
 
-export class TimeDiffPast extends TimeExpression
-{
-    display(): string | undefined
-    {
+export class TimeDiffPast extends TimeExpression {
+    display(): string | undefined {
         const expressions : TimeExpressionClass[] = [
             TimeDiffPastSeconds,
             TimeDiffPastMinutes,

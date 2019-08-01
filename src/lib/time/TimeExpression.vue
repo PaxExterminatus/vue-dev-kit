@@ -6,13 +6,13 @@
 
 <script>
 import {TimeDisplay} from 'time/TimeDisplay/TimeDisplay'
-import {ExpressionFutureDiff} from 'time/TimeDisplay/TimeExpression'
 import {TimeDiffPast} from 'time/TimeDisplay/TimeDiffPast'
+import {TimeDiffFuture} from 'time/TimeDisplay/TimeDiffFuture'
 export default
 {
     props: {
         date : {},
-        expressions : {default: () => [ExpressionFutureDiff,TimeDiffPast]},
+        expressions : {default: () => [TimeDiffFuture,TimeDiffPast]},
     },
 
     data(){return{
