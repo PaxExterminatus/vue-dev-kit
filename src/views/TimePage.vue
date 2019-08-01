@@ -53,8 +53,9 @@
 <script>
 import moment from 'moment'
 import TimeExpression from 'time/TimeExpression'
-import {ExpressionPastDiff,ExpressionFutureDiff} from 'time/TimeDisplay/TimeExpression'
+import {ExpressionFutureDiff} from 'time/TimeDisplay/TimeExpression'
 import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth} from 'time/TimeDisplay/TimeInterval'
+import {TimeDiffPast} from 'time/TimeDisplay/TimeDiffPast'
 export default {
     components: {TimeExpression},
     data(){return{
@@ -96,7 +97,7 @@ export default {
         expressionsDay: [ExpressionWithinDay],
         expressionsWeek: [ExpressionWithinWeek],
         expressionsMonth: [ExpressionWithinMonth],
-        expressionsWeekAndDay: [ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionFutureDiff,ExpressionPastDiff],
+        expressionsWeekAndDay: [ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionFutureDiff,TimeDiffPast],
     }},
 }
 </script>
