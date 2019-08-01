@@ -51,15 +51,22 @@ export class TimeDiffPastYears extends TimeExpression {
 }
 
 export class TimeDiffPast extends TimeExpression {
-    display(): string | undefined {
-        const expressions : TimeExpressionClass[] = [
-            TimeDiffPastSeconds,
-            TimeDiffPastMinutes,
-            TimeDiffPastHours,
-            TimeDiffPastDays,
-            TimeDiffPastMonths,
-            TimeDiffPastYears,
-        ];
-        return new TimeDisplay({inp: this.moment, expressions}).display;
+    get past() {
+        return this.diff > 0;
+    }
+    display(): string | undefined
+    {
+        if (this.past)
+        {
+            const expressions : TimeExpressionClass[] = [
+                TimeDiffPastSeconds,
+                TimeDiffPastMinutes,
+                TimeDiffPastHours,
+                TimeDiffPastDays,
+                TimeDiffPastMonths,
+                TimeDiffPastYears,
+            ];
+            return new TimeDisplay({inp: this.moment, expressions}).display
+        }
     }
 }

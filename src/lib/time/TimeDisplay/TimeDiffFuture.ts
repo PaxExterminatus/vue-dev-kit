@@ -1,7 +1,14 @@
+import moment from 'moment'
 import {TimeExpression,TimeExpressionClass} from './TimeExpression'
-import {TimeDisplay} from "./TimeDisplay";
+import {TimeDisplay} from './TimeDisplay'
 
-export class TimeDiffFutureSeconds extends TimeExpression {
+export abstract class TimeExpressionFuture extends TimeExpression {
+    get diff() : number {
+        return Math.abs(moment().diff(this.moment));
+    }
+}
+
+export class TimeDiffFutureSeconds extends TimeExpressionFuture {
     display() {
         if (this.diff < this.minute) {
             const v = Math.round(this.diff / this.second);
@@ -9,7 +16,7 @@ export class TimeDiffFutureSeconds extends TimeExpression {
         }
     }
 }
-export class TimeDiffFutureMinutes extends TimeExpression {
+export class TimeDiffFutureMinutes extends TimeExpressionFuture {
     display() {
         if (this.diff < this.hour) {
             const v = Math.round(this.diff / this.minute);
@@ -17,7 +24,7 @@ export class TimeDiffFutureMinutes extends TimeExpression {
         }
     }
 }
-export class TimeDiffFutureHours extends TimeExpression {
+export class TimeDiffFutureHours extends TimeExpressionFuture {
     display() {
         if (this.diff < this.day) {
             const v = Math.round(this.diff / this.hour);
@@ -25,7 +32,7 @@ export class TimeDiffFutureHours extends TimeExpression {
         }
     }
 }
-export class TimeDiffFutureDays extends TimeExpression {
+export class TimeDiffFutureDays extends TimeExpressionFuture {
     display() {
         if (this.diff < this.month) {
             const v = Math.round(this.diff / this.day);
@@ -33,7 +40,7 @@ export class TimeDiffFutureDays extends TimeExpression {
         }
     }
 }
-export class TimeDiffFutureMonths extends TimeExpression {
+export class TimeDiffFutureMonths extends TimeExpressionFuture {
     display() {
         if (this.diff < this.year) {
             const v = Math.round(this.diff / this.month);
@@ -41,7 +48,7 @@ export class TimeDiffFutureMonths extends TimeExpression {
         }
     }
 }
-export class TimeDiffFutureYears extends TimeExpression {
+export class TimeDiffFutureYears extends TimeExpressionFuture {
     display() {
         if (this.diff >= this.year) {
             const v = Math.round(this.diff / this.year);
@@ -51,15 +58,22 @@ export class TimeDiffFutureYears extends TimeExpression {
 }
 
 export class TimeDiffFuture extends TimeExpression {
-    display(): string | undefined {
-        const expressions : TimeExpressionClass[] = [
-            TimeDiffFutureSeconds,
-            TimeDiffFutureMinutes,
-            TimeDiffFutureHours,
-            TimeDiffFutureDays,
-            TimeDiffFutureMonths,
-            TimeDiffFutureYears,
-        ];
-        return new TimeDisplay({inp: this.moment, expressions}).display;
+    get future() {
+        return this.diff < 0;
+    }
+    display(): string | undefined
+    {
+        if (this.future)
+        {
+            const expressions : TimeExpressionClass[] = [
+                TimeDiffFutureSeconds,
+                TimeDiffFutureMinutes,
+                TimeDiffFutureHours,
+                TimeDiffFutureDays,
+                TimeDiffFutureMonths,
+                TimeDiffFutureYears,
+            ];
+            return new TimeDisplay({inp: this.moment, expressions}).display;
+        }
     }
 }

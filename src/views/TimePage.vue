@@ -92,7 +92,7 @@ export default {
         month: [
             moment().subtract(31,'d'),
             moment(),
-            moment().add(30,'d'),
+            moment().add(31,'d'),
         ],
         expressionsDay: [ExpressionWithinDay],
         expressionsWeek: [ExpressionWithinWeek],

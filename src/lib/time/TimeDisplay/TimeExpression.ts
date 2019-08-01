@@ -15,6 +15,7 @@ export abstract class TimeExpression {
     get diff() : number {
         return moment().diff(this.moment)
     }
+
     abstract display() : string | undefined
 }
 

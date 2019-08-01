@@ -1,5 +1,5 @@
-import moment, {Moment, MomentInput} from 'moment';
-import {TimeExpressionClass} from './TimeExpression.js';
+import moment, {Moment, MomentInput} from 'moment'
+import {TimeExpressionClass} from './TimeExpression.js'
 
 export declare type TimeDisplayArgs = {
     inp: MomentInput
