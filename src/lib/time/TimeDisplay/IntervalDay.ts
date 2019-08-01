@@ -1,13 +1,11 @@
-import moment from 'moment'
-import {TimeExpression, TimeExpressionClass} from './TimeExpression'
+import {TimeExpression} from './TimeExpression'
 import {ExpressionWithinDay} from './Interval'
-import {TimeDisplay} from "@/lib/time/TimeDisplay/TimeDisplay";
 
 export class IntervalDay extends TimeExpression
 {
     display()
     {
-        const h = +this.moment.format('HH');
+        const h = +this.moment.hour();
         if ( h < 12 )
             return 'morning';
         else if ( h < 18 )
