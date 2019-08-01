@@ -54,13 +54,23 @@
                     </table>
                 </div>
 
-                <table>
-                    <caption>Day, Week, Month</caption>
-                    <tr v-for="dt of difference">
-                        <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                        <td><time-expression :date="dt" :expressions="expressionsWeekAndDay"/></td>
-                    </tr>
-                </table>
+                <div>
+                    <h4>Time of day</h4>
+                    <table>
+                        <tr v-for="dt of timeOfDay">
+                            <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                            <td><time-expression :date="dt" :expressions="expressionsTimeOfDay"/></td>
+                        </tr>
+                    </table>
+
+                    <h4>Time of day and LTN</h4>
+                    <table>
+                        <tr v-for="dt of ltn">
+                            <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                            <td><time-expression :date="dt" :expressions="expLtn"/></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </section>
     </div>
@@ -69,9 +79,10 @@
 <script>
 import moment from 'moment'
 import TimeExpression from 'time/TimeExpression'
-import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeDisplay/TimeInterval'
+import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeDisplay/Interval'
 import {TimeDiffPast} from 'time/TimeDisplay/TimeDiffPast'
 import {TimeDiffFuture} from 'time/TimeDisplay/TimeDiffFuture'
+import {IntervalDay,IntervalDayLtn} from 'time/TimeDisplay/IntervalDay'
 export default {
     components: {TimeExpression},
     data(){return{
@@ -130,13 +141,32 @@ export default {
             moment(),
             moment().add(1,'y'),
         ],
+        timeOfDay: [
+            moment(),
+            moment().subtract(6,'h'),
+            moment().add(6,'h'),
+        ],
+        ltn: [
+            moment().subtract(1,'d').set({hour:11, minute:0, second:0, millisecond:0}),
+            moment().subtract(1,'d').set({hour:15, minute:0, second:0, millisecond:0}),
+            moment().subtract(1,'d').set({hour:19, minute:0, second:0, millisecond:0}),
+
+            moment().set({hour:11, minute:0, second:0, millisecond:0}),
+            moment().set({hour:15, minute:0, second:0, millisecond:0}),
+            moment().set({hour:19, minute:0, second:0, millisecond:0}),
+
+            moment().add(1,'d').set({hour:11, minute:0, second:0, millisecond:0}),
+            moment().add(1,'d').set({hour:15, minute:0, second:0, millisecond:0}),
+            moment().add(1,'d').set({hour:19, minute:0, second:0, millisecond:0}),
+        ],
         expressionsPast: [TimeDiffPast],
         expressionsFuture: [TimeDiffFuture],
         expressionsDay: [ExpressionWithinDay],
         expressionsWeek: [ExpressionWithinWeek],
         expressionsMonth: [ExpressionWithinMonth],
         expressionsYear: [ExpressionWithinYear],
-        expressionsWeekAndDay: [ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,TimeDiffFuture,TimeDiffPast],
+        expressionsTimeOfDay: [IntervalDay],
+        expLtn: [IntervalDayLtn],
     }},
 }
 </script>

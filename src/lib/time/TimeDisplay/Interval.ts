@@ -21,8 +21,8 @@ abstract class TimeExpressionInterval extends TimeExpression {
 export class ExpressionWithinDay extends TimeExpressionInterval {
     display() {
         const position = this.interval('day');
-        if (position === 'last') return 'today';
-        if (position === 'this') return 'yesterday';
+        if (position === 'last') return 'yesterday';
+        if (position === 'this') return 'today';
         if (position === 'next') return 'tomorrow';
     }
 }
