@@ -71,6 +71,16 @@
                         </tr>
                     </table>
                 </div>
+
+                <div>
+                    <h4>Diff v3</h4>
+                    <table>
+                        <tr v-for="dt of diff2">
+                            <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                            <td>{{diff(dt)}}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </section>
     </div>
@@ -83,6 +93,7 @@ import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,Expressio
 import {TimeDiffPast} from 'time/TimeDisplay/TimeDiffPast'
 import {TimeDiffFuture} from 'time/TimeDisplay/TimeDiffFuture'
 import {IntervalDay,IntervalDayLtn} from 'time/TimeDisplay/IntervalDay'
+import {TimeDifference} from 'time/TimeDisplay/TimeDifference'
 export default {
     components: {TimeExpression},
     data(){return{
@@ -159,6 +170,10 @@ export default {
             moment().add(1,'d').set({hour:15, minute:0, second:0, millisecond:0}),
             moment().add(1,'d').set({hour:19, minute:0, second:0, millisecond:0}),
         ],
+        diff2: [
+            moment().subtract(59,'s'),
+            moment().add(30,'s')
+        ],
         expressionsPast: [TimeDiffPast],
         expressionsFuture: [TimeDiffFuture],
         expressionsDay: [ExpressionWithinDay],
@@ -168,5 +183,11 @@ export default {
         expressionsTimeOfDay: [IntervalDay],
         expLtn: [IntervalDayLtn],
     }},
+
+    methods: {
+        diff(inp){
+            return new TimeDifference(inp);
+        }
+    }
 }
 </script>
