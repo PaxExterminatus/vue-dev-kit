@@ -1,7 +1,5 @@
 <template>
-    <time class="time-expression">
-        {{display}}
-    </time>
+    <time class="time-expression">{{display}}</time>
 </template>
 
 <script>
