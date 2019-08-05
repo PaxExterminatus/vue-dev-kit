@@ -82,7 +82,7 @@ import TimeExpression from 'time/TimeExpression'
 import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeExpression/Interval'
 import {TimeDiffPast} from 'time/TimeExpression/DifferencePast'
 import {TimeDiffFuture} from 'time/TimeExpression/DifferenceFuture'
-import {IntervalDay,IntervalDayLtn} from 'time/TimeExpression/PartsOfDay'
+import {IntervalDay,IntervalDayLtn} from 'time/TimeExpression/TimesOfDay'
 export default {
     components: {TimeExpression},
     data(){return{
