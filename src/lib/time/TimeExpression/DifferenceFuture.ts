@@ -1,6 +1,6 @@
 import moment from 'moment'
-import {TimeExpression,TimeExpressionConstructor} from './TimeExpression'
-import {TimeDisplay,TimeDisplayInterface} from './TimeDisplay'
+import {TimeExpression,ExpressionConstructor} from './TimeExpression'
+import {TimeDisplay,TimeDisplayInterface} from '../TimeDisplay/TimeDisplay'
 
 export abstract class TimeExpressionFuture extends TimeExpression  {
     get diff()
@@ -81,7 +81,7 @@ export class TimeDiffFuture extends TimeExpression {
     {
         if (this.future)
         {
-            const expressions : TimeExpressionConstructor[] = [
+            const expressions : ExpressionConstructor[] = [
                 TimeDiffFutureSeconds,
                 TimeDiffFutureMinutes,
                 TimeDiffFutureHours,

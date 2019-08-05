@@ -1,5 +1,5 @@
-import {TimeExpression,TimeExpressionConstructor} from './TimeExpression'
-import {TimeDisplay,TimeDisplayInterface} from './TimeDisplay'
+import {TimeExpression,ExpressionConstructor} from './TimeExpression'
+import {TimeDisplay,TimeDisplayInterface} from '../TimeDisplay/TimeDisplay'
 
 export class TimeDiffPastSeconds extends TimeExpression implements TimeDisplayInterface
 {
@@ -75,7 +75,7 @@ export class TimeDiffPast extends TimeExpression {
     {
         if (this.past)
         {
-            const expressions : TimeExpressionConstructor[] = [
+            const expressions : ExpressionConstructor[] = [
                 TimeDiffPastSeconds,
                 TimeDiffPastMinutes,
                 TimeDiffPastHours,

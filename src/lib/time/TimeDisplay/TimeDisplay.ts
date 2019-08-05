@@ -1,5 +1,5 @@
 import moment, {Moment, MomentInput} from 'moment'
-import {TimeExpressionConstructor} from './TimeExpression'
+import {ExpressionConstructor} from '../TimeExpression/TimeExpression'
 
 export interface TimeDisplayInterface
 {
@@ -9,8 +9,8 @@ export interface TimeDisplayInterface
 export class TimeDisplay
 {
     moment : Moment;
-    expressions : TimeExpressionConstructor[];
-    constructor({inp, expressions} : {inp: MomentInput,  expressions: TimeExpressionConstructor[]})
+    expressions : ExpressionConstructor[];
+    constructor({inp, expressions} : {inp: MomentInput,  expressions: ExpressionConstructor[]})
     {
         this.moment = moment(inp);
         this.expressions = expressions;

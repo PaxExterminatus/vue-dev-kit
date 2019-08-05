@@ -24,7 +24,11 @@ export abstract class TimeExpression
     }
 }
 
-export interface TimeExpressionConstructor
+export interface ExpressionConstructor
 {
     new (inp: MomentInput): TimeDisplayInterface;
 }
+
+export const Expressions : ExpressionConstructor[] = [
+
+];

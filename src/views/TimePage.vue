@@ -79,10 +79,10 @@
 <script>
 import moment from 'moment'
 import TimeExpression from 'time/TimeExpression'
-import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeDisplay/Interval'
-import {TimeDiffPast} from 'time/TimeDisplay/TimeDiffPast'
-import {TimeDiffFuture} from 'time/TimeDisplay/TimeDiffFuture'
-import {IntervalDay,IntervalDayLtn} from 'time/TimeDisplay/IntervalDay'
+import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeExpression/Interval'
+import {TimeDiffPast} from 'time/TimeExpression/DifferencePast'
+import {TimeDiffFuture} from 'time/TimeExpression/DifferenceFuture'
+import {IntervalDay,IntervalDayLtn} from 'time/TimeExpression/PartsOfDay'
 export default {
     components: {TimeExpression},
     data(){return{

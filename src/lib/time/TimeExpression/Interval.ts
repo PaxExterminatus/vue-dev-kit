@@ -1,6 +1,6 @@
 import moment, {unitOfTime} from 'moment'
 import {TimeExpression} from './TimeExpression'
-import {TimeDisplayInterface} from './TimeDisplay'
+import {TimeDisplayInterface} from '../TimeDisplay/TimeDisplay'
 
 type LastThisNext = 'last' | 'this' | 'next'
 

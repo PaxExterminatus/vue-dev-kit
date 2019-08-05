@@ -4,8 +4,8 @@
 
 <script>
 import {TimeDisplay} from 'time/TimeDisplay/TimeDisplay'
-import {TimeDiffPast} from 'time/TimeDisplay/TimeDiffPast'
-import {TimeDiffFuture} from 'time/TimeDisplay/TimeDiffFuture'
+import {TimeDiffPast} from 'time/TimeExpression/DifferencePast'
+import {TimeDiffFuture} from 'time/TimeExpression/DifferenceFuture'
 export default
 {
     props: {
