@@ -1,9 +1,10 @@
 import {TimeExpression} from './TimeExpression'
 import {ExpressionWithinDay} from './Interval'
+import {TimeDisplayInterface} from './TimeDisplay'
 
-export class IntervalDay extends TimeExpression
+export class IntervalDay extends TimeExpression implements TimeDisplayInterface
 {
-    display()
+    get display()
     {
         const h = +this.moment.hour();
         if ( h < 12 )
@@ -15,9 +16,10 @@ export class IntervalDay extends TimeExpression
     }
 }
 
-export class IntervalDayLtn extends TimeExpression {
-    display(): string | undefined
+export class IntervalDayLtn extends TimeExpression implements TimeDisplayInterface
+{
+    get display()
     {
-        return `${new ExpressionWithinDay(this.moment).display()} ${new IntervalDay(this.moment).display()}`
+        return `${new ExpressionWithinDay(this.moment).display} ${new IntervalDay(this.moment).display}`
     }
 }

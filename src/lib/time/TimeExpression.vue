@@ -17,7 +17,7 @@ export default
         display: new TimeDisplay({
             inp: this.date,
             expressions: this.expressions
-        }).display,
+        }),
     }}
 }
 </script>

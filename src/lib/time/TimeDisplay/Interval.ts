@@ -1,5 +1,6 @@
 import moment, {unitOfTime} from 'moment'
 import {TimeExpression} from './TimeExpression'
+import {TimeDisplayInterface} from './TimeDisplay'
 
 type LastThisNext = 'last' | 'this' | 'next'
 
@@ -18,32 +19,40 @@ abstract class TimeExpressionInterval extends TimeExpression {
     }
 }
 
-export class ExpressionWithinDay extends TimeExpressionInterval {
-    display() {
+export class ExpressionWithinDay extends TimeExpressionInterval implements TimeDisplayInterface
+{
+    get display()
+    {
         const position = this.interval('day');
         if (position === 'last') return 'yesterday';
         if (position === 'this') return 'today';
         if (position === 'next') return 'tomorrow';
     }
 }
-export class ExpressionWithinWeek extends TimeExpressionInterval {
-    display() {
+export class ExpressionWithinWeek extends TimeExpressionInterval implements TimeDisplayInterface
+{
+    get display()
+    {
         const position = this.interval('week');
         if (position === 'last') return 'last week';
         if (position === 'this') return 'this week';
         if (position === 'next') return 'next week';
     }
 }
-export class ExpressionWithinMonth extends TimeExpressionInterval {
-    display() {
+export class ExpressionWithinMonth extends TimeExpressionInterval implements TimeDisplayInterface
+{
+    get display()
+    {
         const position = this.interval('month');
         if (position === 'last') return 'last month';
         if (position === 'this') return 'this month';
         if (position === 'next') return 'next month';
     }
 }
-export class ExpressionWithinYear extends TimeExpressionInterval {
-    display() {
+export class ExpressionWithinYear extends TimeExpressionInterval implements TimeDisplayInterface
+{
+    get display()
+    {
         const position = this.interval('year');
         if (position === 'last') return 'last year';
         if (position === 'this') return 'this year';

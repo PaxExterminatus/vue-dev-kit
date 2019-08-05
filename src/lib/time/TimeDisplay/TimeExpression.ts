@@ -21,11 +21,4 @@ export abstract class TimeExpression
     {
         return this.now.diff(this.moment)
     }
-
-    abstract display() : string | undefined
-}
-
-export interface TimeExpressionClass
-{
-    new (inp: MomentInput): TimeExpression;
 }

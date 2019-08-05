@@ -1,56 +1,71 @@
 import moment from 'moment'
-import {TimeExpression,TimeExpressionClass} from './TimeExpression'
-import {TimeDisplay} from './TimeDisplay'
+import {TimeExpression} from './TimeExpression'
+import {TimeDisplay,TimeExpressionClass,TimeDisplayInterface} from './TimeDisplay'
 
-export abstract class TimeExpressionFuture extends TimeExpression {
+export abstract class TimeExpressionFuture extends TimeExpression  {
     get diff() : number {
         return Math.abs(moment().diff(this.moment));
     }
 }
 
-export class TimeDiffFutureSeconds extends TimeExpressionFuture {
-    display() {
-        if (this.diff < this.minute) {
+export class TimeDiffFutureSeconds extends TimeExpressionFuture implements TimeDisplayInterface
+{
+    get display()
+    {
+        if (this.diff < this.minute)
+        {
             const v = Math.round(this.diff / this.second);
             return v > 1 ? `in ${v} seconds` : `in ${v} second`
         }
     }
 }
-export class TimeDiffFutureMinutes extends TimeExpressionFuture {
-    display() {
-        if (this.diff < this.hour) {
+export class TimeDiffFutureMinutes extends TimeExpressionFuture implements TimeDisplayInterface
+{
+    get display()
+    {
+        if (this.diff < this.hour)
+        {
             const v = Math.round(this.diff / this.minute);
             return v > 1 ? `after ${v} minutes` : `after ${v} minute`
         }
     }
 }
-export class TimeDiffFutureHours extends TimeExpressionFuture {
-    display() {
+export class TimeDiffFutureHours extends TimeExpressionFuture implements TimeDisplayInterface
+{
+    get display()
+    {
         if (this.diff < this.day) {
             const v = Math.round(this.diff / this.hour);
             return v > 1 ? `after ${v} hours` : `after ${v} hour`
         }
     }
 }
-export class TimeDiffFutureDays extends TimeExpressionFuture {
-    display() {
-        if (this.diff < this.month) {
+export class TimeDiffFutureDays extends TimeExpressionFuture implements TimeDisplayInterface
+{
+    get display()
+    {
+        if (this.diff < this.month)
+        {
             const v = Math.round(this.diff / this.day);
             return v > 1 ? `after ${v} days` : `after ${v} day`
         }
     }
 }
-export class TimeDiffFutureMonths extends TimeExpressionFuture {
-    display() {
-        if (this.diff < this.year) {
+export class TimeDiffFutureMonths extends TimeExpressionFuture implements TimeDisplayInterface {
+    get display()
+    {
+        if (this.diff < this.year)
+        {
             const v = Math.round(this.diff / this.month);
             return v > 1 ? `after ${v} months` : `after ${v} month`
         }
     }
 }
-export class TimeDiffFutureYears extends TimeExpressionFuture {
-    display() {
-        if (this.diff >= this.year) {
+export class TimeDiffFutureYears extends TimeExpressionFuture implements TimeDisplayInterface {
+    get display()
+    {
+        if (this.diff >= this.year)
+        {
             const v = Math.round(this.diff / this.year);
             return v > 1 ? `after ${v} years` : `after ${v} year`
         }
@@ -61,7 +76,7 @@ export class TimeDiffFuture extends TimeExpression {
     get future() {
         return this.diff < 0;
     }
-    display(): string | undefined
+    get display(): string | undefined
     {
         if (this.future)
         {
