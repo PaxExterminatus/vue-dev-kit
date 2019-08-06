@@ -5,7 +5,7 @@ export class TimeDisplay
 {
     moment : Moment;
     expressions : ExpressionClasses;
-    constructor({inp, expressions} : {inp: MomentInput,  expressions: ExpressionClasses})
+    constructor(inp: MomentInput,  expressions: ExpressionClasses)
     {
         this.moment = moment(inp);
         this.expressions = expressions;
@@ -22,6 +22,6 @@ export class TimeDisplay
 
     toString()
     {
-        return this.display;
+        return this.display || '';
     }
 }

@@ -8,16 +8,16 @@ import {DifferencePast} from 'time/TimeExpression/DifferencePast'
 import {DifferenceFuture} from 'time/TimeExpression/DifferenceFuture'
 export default
 {
-    props: {
+    props:{
         date : {},
         expressions : {default: () => [DifferenceFuture,DifferencePast]},
     },
 
-    data(){return{
-        display: new TimeDisplay({
-            inp: this.date,
-            expressions: this.expressions
-        }),
-    }}
+    computed:{
+        display()
+        {
+            return new TimeDisplay(this.date, this.expressions)
+        }
+    }
 }
 </script>
