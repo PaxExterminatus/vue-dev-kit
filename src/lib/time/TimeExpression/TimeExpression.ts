@@ -1,13 +1,19 @@
 import moment, {MomentInput, Moment} from 'moment'
 
-export abstract class TimeExpression
+export interface TimeExpressionInterface
 {
-    readonly second = 1000;
-    readonly minute = this.second * 60;
-    readonly hour   = this.minute * 60;
-    readonly day    = this.hour   * 24;
-    readonly month  = this.day    * 30;
-    readonly year   = this.month  * 12;
+    readonly moment : Moment
+    readonly display: string | undefined
+}
+
+export abstract class TimeExpression implements TimeExpressionInterface
+{
+    protected readonly second = 1000;
+    protected readonly minute = this.second * 60;
+    protected readonly hour   = this.minute * 60;
+    protected readonly day    = this.hour   * 24;
+    protected readonly month  = this.day    * 30;
+    protected readonly year   = this.month  * 12;
 
     readonly now : Moment = moment();
     readonly moment : Moment;

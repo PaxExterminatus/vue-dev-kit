@@ -10,7 +10,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue', '.jsx', '.ts' ],
         alias: {
-            'lb': path.resolve(__dirname, './src/lib'),
+            'lib': path.resolve(__dirname, './src/lib'),
             'js': path.resolve(__dirname, './src/lib/js'),
             'svg': path.resolve(__dirname, './src/lib/svg'),
             'time': path.resolve(__dirname, './src/lib/time'),
