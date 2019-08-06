@@ -20,12 +20,21 @@ export class TimeDisplay
         }
     }
 
+    get title()
+    {
+        return this.moment.format(this.format)
+    }
+
+    get datetime() {
+        return this.moment.format();
+    }
+
     get display()
     {
         if (this.expression)
             return this.expression.display;
         else
-            return this.moment.format(this.format);
+            return this.title;
     }
 
     toString()

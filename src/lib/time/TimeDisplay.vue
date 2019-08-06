@@ -1,11 +1,12 @@
 <template>
-    <time class="time-expression">{{display}}</time>
+    <time class="time-expression" :title="display.title" :datetime="display.datetime">{{display}}</time>
 </template>
 
 <script>
 import {TimeDisplay} from 'time/TimeDisplay/TimeDisplay'
 import {DifferencePast} from 'time/TimeExpressionDifference/DifferencePast'
 import {DifferenceFuture} from 'time/TimeExpressionDifference/DifferenceFuture'
+import {timeDisplay} from 'lib/time.config'
 export default
 {
     props:{
@@ -16,7 +17,7 @@ export default
     computed:{
         display()
         {
-            return new TimeDisplay(this.date, this.expressions)
+            return new TimeDisplay(this.date, this.expressions, timeDisplay.titleFormat)
         }
     }
 }
