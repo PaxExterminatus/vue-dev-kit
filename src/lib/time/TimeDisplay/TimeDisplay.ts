@@ -15,6 +15,7 @@ export class TimeDisplay
             const exp : TimeExpressionInterface = new Expression(this.moment);
             if (exp.display) {
                 this.expression = exp;
+                break;
             }
 
         }

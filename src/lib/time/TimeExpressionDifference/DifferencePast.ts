@@ -71,16 +71,19 @@ export class DifferencePast extends TimeExpression
 {
     get display() : string | undefined
     {
-        let display;
-        const expressions : TimeExpressionClass[] = [
-            TimeDiffPastSeconds, TimeDiffPastMinutes, TimeDiffPastHours,
-            TimeDiffPastDays, TimeDiffPastMonths, TimeDiffPastYears
-        ];
-
-        for (let Expression of expressions)
+        if (this.diff > 0)
         {
-            display = new Expression(this.moment).display;
-            if (display) return display;
+            let display;
+            const expressions : TimeExpressionClass[] = [
+                TimeDiffPastSeconds, TimeDiffPastMinutes, TimeDiffPastHours,
+                TimeDiffPastDays, TimeDiffPastMonths, TimeDiffPastYears
+            ];
+
+            for (let Expression of expressions)
+            {
+                display = new Expression(this.moment).display;
+                if (display) return display;
+            }
         }
     }
 }

@@ -5,16 +5,12 @@
         <h2>Display Time and Timer</h2>
         <section class="flex-row">
             <table>
-                <tr v-for="dt of timer">
-                    <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                    <td><time-display :date="dt" :expressions="timerExpressions"/></td>
+                <tr>
+                    <td><time-display :date="timer" :expressions="timerExpressions"/></td>
                 </tr>
-            </table>
-            <table>
-                <tr v-for="dt of timer">
-                    <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                    <td>Started <timer-display :date="dt" :expressions="timerExpressions"/></td>
-                </tr>
+                <tr><td><timer-display :date="timer" :expressions="timerExpressions"/></td></tr>
+                <tr><td><timer-display :date="timer" :expressions="timerNowExpressions"/></td></tr>
+
             </table>
         </section>
 
@@ -96,8 +92,11 @@
 <script>
 import moment from 'moment'
 import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeExpressionInterval/Interval'
+
 import {DifferencePast} from 'time/TimeExpressionDifference/DifferencePast'
 import {DifferenceFuture} from 'time/TimeExpressionDifference/DifferenceFuture'
+import {DifferenceNow} from 'time/TimeExpressionDifference/DifferenceNow'
+
 import {IntervalDay,IntervalDayLtn} from 'time/TimeExpressionDay/DayExpression'
 
 import TimeDisplay from 'time/TimeDisplay'
@@ -198,10 +197,9 @@ export default {
         expressionsTimeOfDay: [IntervalDay],
         expLtn: [IntervalDayLtn],
 
-        timer: [
-            moment().add(55,'s'),
-        ],
+        timer: moment().add(8,'s'),
         timerExpressions:[DifferencePast,DifferenceFuture],
+        timerNowExpressions:[DifferenceNow,DifferencePast,DifferenceFuture],
     }},
 }
 </script>

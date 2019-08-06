@@ -7,8 +7,8 @@ import {TimeDisplay} from 'time/TimeDisplay/TimeDisplay'
 import {DifferencePast} from 'time/TimeExpressionDifference/DifferencePast'
 import {DifferenceFuture} from 'time/TimeExpressionDifference/DifferenceFuture'
 import {timeDisplay} from 'lib/time.config'
-function makeDisplay(date,expressions,format) {
-    return new TimeDisplay(date, expressions, format);
+function makeDisplay(cmp) {
+    return new TimeDisplay(cmp.date, cmp.expressions, timeDisplay.titleFormat);
 }
 export default
 {
@@ -18,7 +18,7 @@ export default
     },
 
     data(){return{
-        display: makeDisplay(this.date, this.expressions, timeDisplay.titleFormat),
+        display: makeDisplay(this),
     }},
 
     mounted()
@@ -28,7 +28,7 @@ export default
 
     methods: {
         updateDisplay(){
-            this.display = makeDisplay(this.date, this.expressions, timeDisplay.titleFormat);
+            this.display = makeDisplay(this);
             setTimeout(this.updateDisplay,1000);
         }
     },
@@ -36,7 +36,7 @@ export default
     watch:{
         date()
         {
-            this.display = makeDisplay(this.date, this.expressions, timeDisplay.titleFormat);
+            this.display = makeDisplay(this);
         }
     }
 }
