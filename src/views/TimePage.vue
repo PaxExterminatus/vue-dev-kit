@@ -1,8 +1,25 @@
 <template>
     <div class="home">
         <h1>Time and date</h1>
+
+        <h2>Display Time and Timer</h2>
+        <section class="flex-row">
+            <table>
+                <tr v-for="dt of timer">
+                    <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                    <td><time-display :date="dt" :expressions="timerExpressions"/></td>
+                </tr>
+            </table>
+            <table>
+                <tr v-for="dt of timer">
+                    <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                    <td>Started <timer-display :date="dt" :expressions="timerExpressions"/></td>
+                </tr>
+            </table>
+        </section>
+
         <section>
-            <h2>Relative time display</h2>
+            <h2>Expression for time difference</h2>
             <div class="flex-row">
                 <table>
                     <caption>Past Expressions</caption>
@@ -78,13 +95,15 @@
 
 <script>
 import moment from 'moment'
-import TimeDisplay from 'time/TimeDisplay'
 import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeExpressionInterval/Interval'
 import {DifferencePast} from 'time/TimeExpressionDifference/DifferencePast'
 import {DifferenceFuture} from 'time/TimeExpressionDifference/DifferenceFuture'
 import {IntervalDay,IntervalDayLtn} from 'time/TimeExpressionDay/DayExpression'
+
+import TimeDisplay from 'time/TimeDisplay'
+import TimerDisplay from 'time/TimerDisplay'
 export default {
-    components: {TimeDisplay},
+    components: {TimeDisplay,TimerDisplay},
     data(){return{
         moment,
         past: [
@@ -178,6 +197,11 @@ export default {
         expressionsYear: [ExpressionWithinYear],
         expressionsTimeOfDay: [IntervalDay],
         expLtn: [IntervalDayLtn],
+
+        timer: [
+            moment().add(55,'s'),
+        ],
+        timerExpressions:[DifferencePast,DifferenceFuture],
     }},
 }
 </script>

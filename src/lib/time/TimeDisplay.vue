@@ -10,14 +10,14 @@ import {timeDisplay} from 'lib/time.config'
 export default
 {
     props:{
-        date : {},
+        date:{},
         expressions : {default: () => [DifferenceFuture,DifferencePast]},
     },
 
     computed:{
         display()
         {
-            return new TimeDisplay(this.date, this.expressions, timeDisplay.titleFormat)
+            return new TimeDisplay(this.date, this.expressions, timeDisplay.titleFormat);
         }
     }
 }
