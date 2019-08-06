@@ -1,9 +1,11 @@
 import {TimeExpression} from '../TimeExpression/TimeExpression'
 import {ExpressionWithinDay} from '../TimeExpressionInterval/Interval'
 
+export type TimesOfTheDay = 'midnight' | 'noon' | 'night' | 'morning' | 'afternoon' | 'evening'
+
 export class IntervalDay extends TimeExpression
 {
-    get display()
+    get display() : TimesOfTheDay
     {
         const h : number = <number>this.moment.hour();
         if (h === 0) return 'midnight';
