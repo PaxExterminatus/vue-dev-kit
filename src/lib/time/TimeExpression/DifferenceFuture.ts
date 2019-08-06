@@ -73,14 +73,9 @@ export class TimeDiffFutureYears extends TimeExpressionFuture {
 
 export class DifferenceFuture extends TimeExpression
 {
-    get future()
-    {
-        return this.diff < 0;
-    }
-
     get display() : string | undefined
     {
-        if (this.future)
+        if (this.diff < 0)
         {
             let display;
             const expressions : ExpressionClass[] = [
