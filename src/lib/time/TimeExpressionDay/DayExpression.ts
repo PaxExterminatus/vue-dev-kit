@@ -6,7 +6,6 @@ export class IntervalDay extends TimeExpression
     get display()
     {
         const h : number = <number>this.moment.hour();
-
         if (h === 0) return 'midnight';
         else if (h === 12) return 'noon';
         else if (h >= 22) return 'night';
