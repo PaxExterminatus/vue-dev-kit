@@ -58,7 +58,7 @@
                     <h4>Time of day</h4>
                     <table>
                         <tr v-for="dt of timeOfDay">
-                            <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
+                            <td>{{dt.format('HH:mm:ss')}}</td>
                             <td><time-display :date="dt" :expressions="expressionsTimeOfDay"/></td>
                         </tr>
                     </table>
@@ -142,9 +142,16 @@ export default {
             moment().add(1,'y'),
         ],
         timeOfDay: [
-            moment(),
-            moment().subtract(6,'h'),
-            moment().add(6,'h'),
+            moment().set({hour:22, minute:0, second:0, millisecond:0}),
+            moment().set({hour:0, minute:0, second:0, millisecond:0}),
+            moment().set({hour:5, minute:0, second:0, millisecond:0}),
+            moment().set({hour:6, minute:0, second:0, millisecond:0}),
+            moment().set({hour:11, minute:0, second:0, millisecond:0}),
+            moment().set({hour:12, minute:0, second:0, millisecond:0}),
+            moment().set({hour:13, minute:0, second:0, millisecond:0}),
+            moment().set({hour:17, minute:0, second:0, millisecond:0}),
+            moment().set({hour:18, minute:0, second:0, millisecond:0}),
+            moment().set({hour:21, minute:0, second:0, millisecond:0}),
         ],
         ltn: [
             moment().subtract(1,'d').set({hour:11, minute:0, second:0, millisecond:0}),

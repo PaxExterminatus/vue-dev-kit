@@ -5,13 +5,15 @@ export class IntervalDay extends TimeExpression
 {
     get display()
     {
-        const h = +this.moment.hour();
-        if ( h < 12 )
-            return 'morning';
-        else if ( h < 18 )
-            return 'afternoon';
-        else
-            return 'evening';
+        const h : number = <number>this.moment.hour();
+
+        if (h === 0) return 'midnight';
+        else if (h === 12) return 'noon';
+        else if (h >= 22) return 'night';
+        else if (h < 6) return 'night';
+        else if (h >= 6 && h < 12) return 'morning';
+        else if (h > 12 && h <= 17) return 'afternoon';
+        else return 'evening';
     }
 }
 
