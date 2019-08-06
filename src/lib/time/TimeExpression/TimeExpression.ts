@@ -31,9 +31,9 @@ export abstract class TimeExpression implements TimeExpressionInterface
     abstract get display() : string | undefined;
 }
 
-export interface ExpressionClass
+export interface TimeExpressionClass
 {
     new (inp: MomentInput): TimeExpression;
 }
 
-export type ExpressionClasses = ExpressionClass[];
+export type ExpressionClasses = TimeExpressionClass[];

@@ -1,4 +1,4 @@
-import {TimeExpression,ExpressionClass} from './TimeExpression'
+import {TimeExpression,TimeExpressionClass} from './TimeExpression'
 
 export class TimeDiffPastSeconds extends TimeExpression
 {
@@ -72,7 +72,7 @@ export class DifferencePast extends TimeExpression
     get display() : string | undefined
     {
         let display;
-        const expressions : ExpressionClass[] = [
+        const expressions : TimeExpressionClass[] = [
             TimeDiffPastSeconds, TimeDiffPastMinutes, TimeDiffPastHours,
             TimeDiffPastDays, TimeDiffPastMonths, TimeDiffPastYears
         ];
