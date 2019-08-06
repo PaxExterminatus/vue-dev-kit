@@ -4,13 +4,13 @@
 
 <script>
 import {TimeDisplay} from 'time/TimeDisplay/TimeDisplay'
-import {TimeDiffPast} from 'time/TimeExpression/DifferencePast'
-import {TimeDiffFuture} from 'time/TimeExpression/DifferenceFuture'
+import {DifferencePast} from 'time/TimeExpression/DifferencePast'
+import {DifferenceFuture} from 'time/TimeExpression/DifferenceFuture'
 export default
 {
     props: {
         date : {},
-        expressions : {default: () => [TimeDiffFuture,TimeDiffPast]},
+        expressions : {default: () => [DifferenceFuture,DifferencePast]},
     },
 
     data(){return{

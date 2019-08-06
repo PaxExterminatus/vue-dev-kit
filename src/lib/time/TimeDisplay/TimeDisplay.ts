@@ -1,16 +1,11 @@
 import moment, {Moment, MomentInput} from 'moment'
-import {ExpressionConstructor} from '../TimeExpression/TimeExpression'
-
-export interface TimeDisplayInterface
-{
-    readonly display : string | undefined
-}
+import {ExpressionClasses} from '../TimeExpression/TimeExpression'
 
 export class TimeDisplay
 {
     moment : Moment;
-    expressions : ExpressionConstructor[];
-    constructor({inp, expressions} : {inp: MomentInput,  expressions: ExpressionConstructor[]})
+    expressions : ExpressionClasses;
+    constructor({inp, expressions} : {inp: MomentInput,  expressions: ExpressionClasses})
     {
         this.moment = moment(inp);
         this.expressions = expressions;
@@ -18,9 +13,9 @@ export class TimeDisplay
 
     get display()
     {
-        for (let ExpressionClass of this.expressions)
+        for (let Expression of this.expressions)
         {
-            const display = new ExpressionClass(this.moment).display;
+            const display = new Expression(this.moment).display;
             if (display) return display;
         }
     }

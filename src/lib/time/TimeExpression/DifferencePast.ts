@@ -1,7 +1,6 @@
-import {TimeExpression,ExpressionConstructor} from './TimeExpression'
-import {TimeDisplay,TimeDisplayInterface} from '../TimeDisplay/TimeDisplay'
+import {TimeExpression,ExpressionClass} from './TimeExpression'
 
-export class TimeDiffPastSeconds extends TimeExpression implements TimeDisplayInterface
+export class TimeDiffPastSeconds extends TimeExpression
 {
     get display()
     {
@@ -12,7 +11,7 @@ export class TimeDiffPastSeconds extends TimeExpression implements TimeDisplayIn
         }
     }
 }
-export class TimeDiffPastMinutes extends TimeExpression implements TimeDisplayInterface
+export class TimeDiffPastMinutes extends TimeExpression
 {
     get display()
     {
@@ -23,7 +22,7 @@ export class TimeDiffPastMinutes extends TimeExpression implements TimeDisplayIn
         }
     }
 }
-export class TimeDiffPastHours extends TimeExpression implements TimeDisplayInterface
+export class TimeDiffPastHours extends TimeExpression
 {
     get display()
     {
@@ -34,7 +33,7 @@ export class TimeDiffPastHours extends TimeExpression implements TimeDisplayInte
         }
     }
 }
-export class TimeDiffPastDays extends TimeExpression implements TimeDisplayInterface
+export class TimeDiffPastDays extends TimeExpression
 {
     get display()
     {
@@ -45,7 +44,7 @@ export class TimeDiffPastDays extends TimeExpression implements TimeDisplayInter
         }
     }
 }
-export class TimeDiffPastMonths extends TimeExpression implements TimeDisplayInterface
+export class TimeDiffPastMonths extends TimeExpression
 {
     get display()
     {
@@ -56,7 +55,8 @@ export class TimeDiffPastMonths extends TimeExpression implements TimeDisplayInt
         }
     }
 }
-export class TimeDiffPastYears extends TimeExpression implements TimeDisplayInterface {
+export class TimeDiffPastYears extends TimeExpression
+{
     get display()
     {
         if (this.diff >= this.year)
@@ -67,23 +67,20 @@ export class TimeDiffPastYears extends TimeExpression implements TimeDisplayInte
     }
 }
 
-export class TimeDiffPast extends TimeExpression {
-    get past() {
-        return this.diff > 0;
-    }
+export class DifferencePast extends TimeExpression
+{
     get display() : string | undefined
     {
-        if (this.past)
+        let display;
+        const expressions : ExpressionClass[] = [
+            TimeDiffPastSeconds, TimeDiffPastMinutes, TimeDiffPastHours,
+            TimeDiffPastDays, TimeDiffPastMonths, TimeDiffPastYears
+        ];
+
+        for (let Expression of expressions)
         {
-            const expressions : ExpressionConstructor[] = [
-                TimeDiffPastSeconds,
-                TimeDiffPastMinutes,
-                TimeDiffPastHours,
-                TimeDiffPastDays,
-                TimeDiffPastMonths,
-                TimeDiffPastYears,
-            ];
-            return new TimeDisplay({inp: this.moment, expressions}).display
+            display = new Expression(this.moment).display;
+            if (display) return display;
         }
     }
 }

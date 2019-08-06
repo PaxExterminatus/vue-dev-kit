@@ -80,8 +80,8 @@
 import moment from 'moment'
 import TimeExpression from 'time/TimeExpression'
 import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeExpression/Interval'
-import {TimeDiffPast} from 'time/TimeExpression/DifferencePast'
-import {TimeDiffFuture} from 'time/TimeExpression/DifferenceFuture'
+import {DifferencePast} from 'time/TimeExpression/DifferencePast'
+import {DifferenceFuture} from 'time/TimeExpression/DifferenceFuture'
 import {IntervalDay,IntervalDayLtn} from 'time/TimeExpression/TimesOfDay'
 export default {
     components: {TimeExpression},
@@ -163,8 +163,8 @@ export default {
             moment().subtract(59,'s'),
             moment().add(30,'s')
         ],
-        expressionsPast: [TimeDiffPast],
-        expressionsFuture: [TimeDiffFuture],
+        expressionsPast: [DifferencePast],
+        expressionsFuture: [DifferenceFuture],
         expressionsDay: [ExpressionWithinDay],
         expressionsWeek: [ExpressionWithinWeek],
         expressionsMonth: [ExpressionWithinMonth],

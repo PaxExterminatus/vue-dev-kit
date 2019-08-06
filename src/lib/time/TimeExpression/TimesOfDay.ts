@@ -1,8 +1,7 @@
 import {TimeExpression} from './TimeExpression'
 import {ExpressionWithinDay} from './Interval'
-import {TimeDisplayInterface} from '../TimeDisplay/TimeDisplay'
 
-export class IntervalDay extends TimeExpression implements TimeDisplayInterface
+export class IntervalDay extends TimeExpression
 {
     get display()
     {
@@ -16,7 +15,7 @@ export class IntervalDay extends TimeExpression implements TimeDisplayInterface
     }
 }
 
-export class IntervalDayLtn extends TimeExpression implements TimeDisplayInterface
+export class IntervalDayLtn extends TimeExpression
 {
     get display()
     {

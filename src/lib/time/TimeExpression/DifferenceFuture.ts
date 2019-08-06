@@ -1,6 +1,4 @@
-import moment from 'moment'
-import {TimeExpression,ExpressionConstructor} from './TimeExpression'
-import {TimeDisplay,TimeDisplayInterface} from '../TimeDisplay/TimeDisplay'
+import {TimeExpression,ExpressionClass} from './TimeExpression'
 
 export abstract class TimeExpressionFuture extends TimeExpression  {
     get diff()
@@ -9,7 +7,7 @@ export abstract class TimeExpressionFuture extends TimeExpression  {
     }
 }
 
-export class TimeDiffFutureSeconds extends TimeExpressionFuture implements TimeDisplayInterface
+export class TimeDiffFutureSeconds extends TimeExpressionFuture
 {
     get display()
     {
@@ -20,7 +18,7 @@ export class TimeDiffFutureSeconds extends TimeExpressionFuture implements TimeD
         }
     }
 }
-export class TimeDiffFutureMinutes extends TimeExpressionFuture implements TimeDisplayInterface
+export class TimeDiffFutureMinutes extends TimeExpressionFuture
 {
     get display()
     {
@@ -31,7 +29,7 @@ export class TimeDiffFutureMinutes extends TimeExpressionFuture implements TimeD
         }
     }
 }
-export class TimeDiffFutureHours extends TimeExpressionFuture implements TimeDisplayInterface
+export class TimeDiffFutureHours extends TimeExpressionFuture
 {
     get display()
     {
@@ -41,7 +39,7 @@ export class TimeDiffFutureHours extends TimeExpressionFuture implements TimeDis
         }
     }
 }
-export class TimeDiffFutureDays extends TimeExpressionFuture implements TimeDisplayInterface
+export class TimeDiffFutureDays extends TimeExpressionFuture
 {
     get display()
     {
@@ -52,7 +50,7 @@ export class TimeDiffFutureDays extends TimeExpressionFuture implements TimeDisp
         }
     }
 }
-export class TimeDiffFutureMonths extends TimeExpressionFuture implements TimeDisplayInterface {
+export class TimeDiffFutureMonths extends TimeExpressionFuture {
     get display()
     {
         if (this.diff < this.year)
@@ -62,7 +60,7 @@ export class TimeDiffFutureMonths extends TimeExpressionFuture implements TimeDi
         }
     }
 }
-export class TimeDiffFutureYears extends TimeExpressionFuture implements TimeDisplayInterface {
+export class TimeDiffFutureYears extends TimeExpressionFuture {
     get display()
     {
         if (this.diff >= this.year)
@@ -73,23 +71,28 @@ export class TimeDiffFutureYears extends TimeExpressionFuture implements TimeDis
     }
 }
 
-export class TimeDiffFuture extends TimeExpression {
-    get future() {
+export class DifferenceFuture extends TimeExpression
+{
+    get future()
+    {
         return this.diff < 0;
     }
-    get display()
+
+    get display() : string | undefined
     {
         if (this.future)
         {
-            const expressions : ExpressionConstructor[] = [
-                TimeDiffFutureSeconds,
-                TimeDiffFutureMinutes,
-                TimeDiffFutureHours,
-                TimeDiffFutureDays,
-                TimeDiffFutureMonths,
-                TimeDiffFutureYears,
+            let display;
+            const expressions : ExpressionClass[] = [
+                TimeDiffFutureSeconds, TimeDiffFutureMinutes, TimeDiffFutureHours,
+                TimeDiffFutureDays, TimeDiffFutureMonths, TimeDiffFutureYears
             ];
-            return new TimeDisplay({inp: this.moment, expressions}).display;
+
+            for (let Expression of expressions)
+            {
+                display = new Expression(this.moment).display;
+                if (display) return display;
+            }
         }
     }
 }

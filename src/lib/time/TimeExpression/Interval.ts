@@ -1,6 +1,5 @@
 import moment, {unitOfTime} from 'moment'
 import {TimeExpression} from './TimeExpression'
-import {TimeDisplayInterface} from '../TimeDisplay/TimeDisplay'
 
 type LastThisNext = 'last' | 'this' | 'next'
 
@@ -19,7 +18,7 @@ abstract class TimeExpressionInterval extends TimeExpression {
     }
 }
 
-export class ExpressionWithinDay extends TimeExpressionInterval implements TimeDisplayInterface
+export class ExpressionWithinDay extends TimeExpressionInterval
 {
     get display()
     {
@@ -29,7 +28,7 @@ export class ExpressionWithinDay extends TimeExpressionInterval implements TimeD
         if (position === 'next') return 'tomorrow';
     }
 }
-export class ExpressionWithinWeek extends TimeExpressionInterval implements TimeDisplayInterface
+export class ExpressionWithinWeek extends TimeExpressionInterval
 {
     get display()
     {
@@ -39,7 +38,7 @@ export class ExpressionWithinWeek extends TimeExpressionInterval implements Time
         if (position === 'next') return 'next week';
     }
 }
-export class ExpressionWithinMonth extends TimeExpressionInterval implements TimeDisplayInterface
+export class ExpressionWithinMonth extends TimeExpressionInterval
 {
     get display()
     {
@@ -49,7 +48,7 @@ export class ExpressionWithinMonth extends TimeExpressionInterval implements Tim
         if (position === 'next') return 'next month';
     }
 }
-export class ExpressionWithinYear extends TimeExpressionInterval implements TimeDisplayInterface
+export class ExpressionWithinYear extends TimeExpressionInterval
 {
     get display()
     {

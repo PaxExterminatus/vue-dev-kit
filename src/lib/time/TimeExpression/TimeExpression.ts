@@ -1,5 +1,4 @@
 import moment, {MomentInput, Moment} from 'moment'
-import {TimeDisplayInterface} from "@/lib/time/TimeDisplay/TimeDisplay";
 
 export abstract class TimeExpression
 {
@@ -22,13 +21,13 @@ export abstract class TimeExpression
     {
         return this.now.diff(this.moment)
     }
+
+    abstract get display() : string | undefined;
 }
 
-export interface ExpressionConstructor
+export interface ExpressionClass
 {
-    new (inp: MomentInput): TimeDisplayInterface;
+    new (inp: MomentInput): TimeExpression;
 }
 
-export const Expressions : ExpressionConstructor[] = [
-
-];
+export type ExpressionClasses = ExpressionClass[];
