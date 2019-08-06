@@ -8,7 +8,7 @@
                     <caption>Past Expressions</caption>
                     <tr v-for="dt of past">
                         <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                        <td><time-expression :date="dt" :expressions="expressionsPast"/></td>
+                        <td><time-display :date="dt" :expressions="expressionsPast"/></td>
                     </tr>
                 </table>
 
@@ -16,7 +16,7 @@
                     <caption>Future Expressions</caption>
                     <tr v-for="dt of future">
                         <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                        <td><time-expression :date="dt" :expressions="expressionsFuture"/></td>
+                        <td><time-display :date="dt" :expressions="expressionsFuture"/></td>
                     </tr>
                 </table>
 
@@ -25,7 +25,7 @@
                     <table>
                         <tr v-for="dt of days">
                             <td>{{dt.format('YYYY.MM.DD')}}</td>
-                            <td><time-expression :date="dt" :expressions="expressionsDay"/></td>
+                            <td><time-display :date="dt" :expressions="expressionsDay"/></td>
                         </tr>
                     </table>
 
@@ -33,7 +33,7 @@
                     <table>
                         <tr v-for="dt of weeks">
                             <td>{{dt.format('YYYY.MM.DD')}}</td>
-                            <td><time-expression :date="dt" :expressions="expressionsWeek"/></td>
+                            <td><time-display :date="dt" :expressions="expressionsWeek"/></td>
                         </tr>
                     </table>
 
@@ -41,7 +41,7 @@
                     <table>
                         <tr v-for="dt of month">
                             <td>{{dt.format('YYYY.MM.DD')}}</td>
-                            <td><time-expression :date="dt" :expressions="expressionsMonth"/></td>
+                            <td><time-display :date="dt" :expressions="expressionsMonth"/></td>
                         </tr>
                     </table>
 
@@ -49,7 +49,7 @@
                     <table>
                         <tr v-for="dt of year">
                             <td>{{dt.format('YYYY.MM.DD')}}</td>
-                            <td><time-expression :date="dt" :expressions="expressionsYear"/></td>
+                            <td><time-display :date="dt" :expressions="expressionsYear"/></td>
                         </tr>
                     </table>
                 </div>
@@ -59,7 +59,7 @@
                     <table>
                         <tr v-for="dt of timeOfDay">
                             <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                            <td><time-expression :date="dt" :expressions="expressionsTimeOfDay"/></td>
+                            <td><time-display :date="dt" :expressions="expressionsTimeOfDay"/></td>
                         </tr>
                     </table>
 
@@ -67,7 +67,7 @@
                     <table>
                         <tr v-for="dt of ltn">
                             <td>{{dt.format('YYYY.MM.DD HH:mm:ss')}}</td>
-                            <td><time-expression :date="dt" :expressions="expLtn"/></td>
+                            <td><time-display :date="dt" :expressions="expLtn"/></td>
                         </tr>
                     </table>
                 </div>
@@ -78,13 +78,13 @@
 
 <script>
 import moment from 'moment'
-import TimeExpression from 'time/TimeExpression'
+import TimeDisplay from 'time/TimeDisplay'
 import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeExpression/Interval'
 import {DifferencePast} from 'time/TimeExpression/DifferencePast'
 import {DifferenceFuture} from 'time/TimeExpression/DifferenceFuture'
 import {IntervalDay,IntervalDayLtn} from 'time/TimeExpression/TimesOfDay'
 export default {
-    components: {TimeExpression},
+    components: {TimeDisplay},
     data(){return{
         moment,
         past: [
