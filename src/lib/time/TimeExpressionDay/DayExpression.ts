@@ -1,5 +1,5 @@
-import {TimeExpression} from './TimeExpression'
-import {ExpressionWithinDay} from './Interval'
+import {TimeExpression} from '../TimeExpression/TimeExpression'
+import {ExpressionWithinDay} from '../TimeExpressionInterval/Interval'
 
 export class IntervalDay extends TimeExpression
 {
