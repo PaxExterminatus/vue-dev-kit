@@ -1,13 +1,13 @@
 import moment, {Moment, MomentInput} from 'moment'
-import {TimeExpressionInterface,ExpressionClasses} from '../../TimeExpression/TimeExpression'
-import {TimeDisplayInterface} from '../prototypes/TimeDisplayTypes'
+import {TimeExpressionInterface,ExpressionClasses} from '../TimeExpression/TimeExpression'
+import {TimeDisplayEntity} from './TimeDisplayTypes'
 
-export class TimeDisplay implements  TimeDisplayInterface
+export class TimeDisplay implements TimeDisplayEntity
 {
     readonly moment : Moment;
     readonly expression : TimeExpressionInterface | undefined;
     readonly format : string;
-    constructor(inp: MomentInput, expressions: ExpressionClasses, format : string = 'DD MMMM, YYYY [at] HH:mm')
+    constructor(inp: MomentInput, expressions: ExpressionClasses, format: string = 'DD MMMM, YYYY [at] HH:mm')
     {
         this.moment = moment(inp);
         for (let Expression of expressions)

@@ -99,8 +99,8 @@ import {DifferenceNow} from 'time/TimeExpression/Difference/DifferenceNow'
 
 import {IntervalDay,IntervalDayLtn} from 'time/TimeExpression/Day/DayExpression'
 
-import TimeDisplay from 'time/TimeDisplay/time-display'
-import TimerDisplay from 'time/TimeDisplay/timer-display'
+import TimeDisplay from 'time/TimeDisplay'
+import TimerDisplay from 'time/TimerDisplay'
 export default {
     components: {TimeDisplay,TimerDisplay},
     data(){return{

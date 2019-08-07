@@ -1,4 +1,5 @@
-export interface TimeDisplayInterface {
+
+declare interface TimeDisplayEntity {
     readonly title : string
     readonly datetime : string
     readonly display : string
