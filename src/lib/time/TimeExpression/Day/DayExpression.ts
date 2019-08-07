@@ -1,5 +1,5 @@
-import {TimeExpression} from '../TimeExpression/TimeExpression'
-import {ExpressionWithinDay} from '../TimeExpressionInterval/Interval'
+import {TimeExpression} from '../TimeExpression'
+import {ExpressionWithinDay} from '../Interval/Interval'
 
 export type TimesOfTheDay = 'midnight' | 'noon' | 'night' | 'morning' | 'afternoon' | 'evening'
 

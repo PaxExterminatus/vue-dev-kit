@@ -1,5 +1,5 @@
 import moment, {unitOfTime} from 'moment'
-import {TimeExpression} from '../TimeExpression/TimeExpression'
+import {TimeExpression} from '../TimeExpression'
 
 type LastThisNext = 'last' | 'this' | 'next'
 

@@ -91,16 +91,16 @@
 
 <script>
 import moment from 'moment'
-import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeExpressionInterval/Interval'
+import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeExpression/Interval/Interval'
 
-import {DifferencePast} from 'time/TimeExpressionDifference/DifferencePast'
-import {DifferenceFuture} from 'time/TimeExpressionDifference/DifferenceFuture'
-import {DifferenceNow} from 'time/TimeExpressionDifference/DifferenceNow'
+import {DifferencePast} from 'time/TimeExpression/Difference/DifferencePast'
+import {DifferenceFuture} from 'time/TimeExpression/Difference/DifferenceFuture'
+import {DifferenceNow} from 'time/TimeExpression/Difference/DifferenceNow'
 
-import {IntervalDay,IntervalDayLtn} from 'time/TimeExpressionDay/DayExpression'
+import {IntervalDay,IntervalDayLtn} from 'time/TimeExpression/Day/DayExpression'
 
-import TimeDisplay from 'time/TimeDisplay'
-import TimerDisplay from 'time/TimerDisplay'
+import TimeDisplay from 'time/TimeDisplay/time-display'
+import TimerDisplay from 'time/TimeDisplay/timer-display'
 export default {
     components: {TimeDisplay,TimerDisplay},
     data(){return{

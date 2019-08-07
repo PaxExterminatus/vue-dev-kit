@@ -1,4 +1,4 @@
-import {TimeExpression,TimeExpressionClass} from '../TimeExpression/TimeExpression'
+import {TimeExpression,TimeExpressionClass} from '../TimeExpression'
 
 export class TimeDiffPastSeconds extends TimeExpression
 {

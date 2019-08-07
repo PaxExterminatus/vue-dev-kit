@@ -1,4 +1,4 @@
-import {TimeExpression,TimeExpressionClass} from '../TimeExpression/TimeExpression'
+import {TimeExpression,TimeExpressionClass} from '../TimeExpression'
 
 export abstract class TimeExpressionFuture extends TimeExpression  {
     get diff()

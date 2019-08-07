@@ -1,4 +1,4 @@
-import {TimeExpression} from '../TimeExpression/TimeExpression'
+import {TimeExpression} from '../TimeExpression'
 
 export class DifferenceNow extends TimeExpression
 {

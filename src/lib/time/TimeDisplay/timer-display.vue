@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import {TimeDisplay} from 'time/TimeDisplay/TimeDisplay'
-import {DifferencePast} from 'time/TimeExpressionDifference/DifferencePast'
-import {DifferenceFuture} from 'time/TimeExpressionDifference/DifferenceFuture'
+import {TimeDisplay} from 'time/TimeDisplay/realisation/TimeDisplay'
+import {DifferencePast} from 'time/TimeExpression/Difference/DifferencePast'
+import {DifferenceFuture} from 'time/TimeExpression/Difference/DifferenceFuture'
 import {timeDisplay} from 'lib/time.config'
 function makeDisplay(cmp) {
     return new TimeDisplay(cmp.date, cmp.expressions, timeDisplay.titleFormat);
@@ -21,8 +21,7 @@ export default
         display: makeDisplay(this),
     }},
 
-    mounted()
-    {
+    mounted() {
         this.updateDisplay()
     },
 
@@ -33,9 +32,8 @@ export default
         }
     },
 
-    watch:{
-        date()
-        {
+    watch: {
+        date() {
             this.display = makeDisplay(this);
         }
     }
