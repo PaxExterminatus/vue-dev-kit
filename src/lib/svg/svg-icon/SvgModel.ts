@@ -1,11 +1,6 @@
 // @ts-ignore
 import {conf} from 'lib/svg.config'
-
-export interface SvgInterface {
-    css: string;
-    html: string;
-    size: number;
-}
+import {SvgInterface} from './SvgInterface'
 
 export class Svg implements SvgInterface {
     css: string;

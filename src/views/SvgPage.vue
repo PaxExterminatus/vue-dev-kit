@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import icon from 'svg/icon'
+import icon from 'svg/svg-icon/components/icon'
 export default {
   components: {icon}
 }

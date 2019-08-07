@@ -1,6 +1,6 @@
 import moment, {Moment, MomentInput} from 'moment'
-import {TimeExpressionInterface,TimeExpressionClasses} from './TimeExpressionTypes'
-import {TimeDisplayEntity} from './TimeDisplayTypes'
+import {TimeExpressionInterface,TimeExpressionClasses} from './TimeExpression/TimeExpression'
+import {TimeDisplayEntity} from './TimeDisplayInterface'
 
 export class TimeDisplay implements TimeDisplayEntity
 {

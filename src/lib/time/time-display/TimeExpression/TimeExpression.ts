@@ -1,5 +1,4 @@
 import moment, {MomentInput, Moment} from 'moment'
-import {TimeExpressionInterface} from './TimeExpressionTypes'
 
 export abstract class TimeExpression implements TimeExpressionInterface
 {
@@ -25,3 +24,16 @@ export abstract class TimeExpression implements TimeExpressionInterface
 
     abstract get display() : string | undefined;
 }
+
+export interface TimeExpressionInterface
+{
+    readonly moment : Moment
+    readonly display: string | undefined
+}
+
+export interface TimeExpressionClass
+{
+    new (inp: MomentInput): TimeExpression;
+}
+
+export type TimeExpressionClasses = TimeExpressionClass[]

@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import {TimeDisplay} from 'time/TimeDisplay/TimeDisplay'
-import {DifferencePast} from 'time/TimeDisplay/Difference/DifferencePast'
-import {DifferenceFuture} from 'time/TimeDisplay/Difference/DifferenceFuture'
+import {TimeDisplay} from 'time/time-display/TimeDisplayModel'
+import {DifferencePast} from 'time/time-display/TimeExpression/Difference/DifferencePast'
+import {DifferenceFuture} from 'time/time-display/TimeExpression/Difference/DifferenceFuture'
 import {timeDisplay} from 'lib/time.config'
 function makeDisplay(cmp) {
     return new TimeDisplay(cmp.date, cmp.expressions, timeDisplay.titleFormat);

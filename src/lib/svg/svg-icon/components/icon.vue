@@ -4,7 +4,7 @@
 
 <script>
 import {conf} from 'lib/svg.config'
-import vectors from './vectors'
+import vectors from '../../vectors'
 import {isString} from 'js/typeCheck'
 export default {
     props: {
