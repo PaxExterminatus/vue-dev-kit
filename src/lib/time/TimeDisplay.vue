@@ -4,8 +4,8 @@
 
 <script>
 import {TimeDisplay} from 'time/TimeDisplay/TimeDisplay'
-import {DifferencePast} from 'time/TimeExpression/Difference/DifferencePast'
-import {DifferenceFuture} from 'time/TimeExpression/Difference/DifferenceFuture'
+import {DifferencePast} from 'time/TimeDisplay/Difference/DifferencePast'
+import {DifferenceFuture} from 'time/TimeDisplay/Difference/DifferenceFuture'
 import {timeDisplay} from 'lib/time.config'
 export default
 {

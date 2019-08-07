@@ -1,4 +1,5 @@
-import {TimeExpression,TimeExpressionClass} from '../TimeExpression'
+import {TimeExpression} from '../TimeExpression'
+import {TimeExpressionClasses} from '../TimeExpressionTypes'
 
 export class TimeDiffPastSeconds extends TimeExpression
 {
@@ -74,7 +75,7 @@ export class DifferencePast extends TimeExpression
         if (this.diff > 0)
         {
             let display;
-            const expressions : TimeExpressionClass[] = [
+            const expressions : TimeExpressionClasses = [
                 TimeDiffPastSeconds, TimeDiffPastMinutes, TimeDiffPastHours,
                 TimeDiffPastDays, TimeDiffPastMonths, TimeDiffPastYears
             ];

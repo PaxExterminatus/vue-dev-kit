@@ -91,13 +91,13 @@
 
 <script>
 import moment from 'moment'
-import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeExpression/Interval/Interval'
+import {ExpressionWithinDay,ExpressionWithinWeek,ExpressionWithinMonth,ExpressionWithinYear} from 'time/TimeDisplay/Interval/Interval'
 
-import {DifferencePast} from 'time/TimeExpression/Difference/DifferencePast'
-import {DifferenceFuture} from 'time/TimeExpression/Difference/DifferenceFuture'
-import {DifferenceNow} from 'time/TimeExpression/Difference/DifferenceNow'
+import {DifferencePast} from 'time/TimeDisplay/Difference/DifferencePast'
+import {DifferenceFuture} from 'time/TimeDisplay/Difference/DifferenceFuture'
+import {DifferenceNow} from 'time/TimeDisplay/Difference/DifferenceNow'
 
-import {IntervalDay,IntervalDayLtn} from 'time/TimeExpression/Day/DayExpression'
+import {IntervalDay,IntervalDayLtn} from 'time/TimeDisplay/Day/DayExpression'
 
 import TimeDisplay from 'time/TimeDisplay'
 import TimerDisplay from 'time/TimerDisplay'

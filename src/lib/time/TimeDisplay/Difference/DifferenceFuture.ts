@@ -1,4 +1,5 @@
-import {TimeExpression,TimeExpressionClass} from '../TimeExpression'
+import {TimeExpression} from '../TimeExpression'
+import {TimeExpressionClasses} from '../TimeExpressionTypes'
 
 export abstract class TimeExpressionFuture extends TimeExpression  {
     get diff()
@@ -78,7 +79,7 @@ export class DifferenceFuture extends TimeExpression
         if (this.diff < 0)
         {
             let display;
-            const expressions : TimeExpressionClass[] = [
+            const expressions : TimeExpressionClasses = [
                 TimeDiffFutureSeconds, TimeDiffFutureMinutes, TimeDiffFutureHours,
                 TimeDiffFutureDays, TimeDiffFutureMonths, TimeDiffFutureYears
             ];
