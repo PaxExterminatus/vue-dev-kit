@@ -6,7 +6,7 @@
 import {TimeDisplay} from 'time/time-display/TimeDisplayModel'
 import {DifferencePast} from 'time/time-display/TimeExpression/Difference/DifferencePast'
 import {DifferenceFuture} from 'time/time-display/TimeExpression/Difference/DifferenceFuture'
-import {timeDisplay} from 'lib/time.config'
+import {timeDisplay} from 'time/time.config'
 export default
 {
     props:{

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {conf} from 'lib/svg.config'
+import {conf} from 'svg/svg.config'
 import vectors from '../../vectors'
 import {isString} from 'js/typeCheck'
 export default {

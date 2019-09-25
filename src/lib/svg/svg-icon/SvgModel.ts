@@ -1,5 +1,5 @@
 // @ts-ignore
-import {conf} from 'lib/svg.config'
+import {conf} from 'lib/svg/svg.config'
 import {SvgInterface} from './SvgInterface'
 
 export class Svg implements SvgInterface {
