@@ -12,7 +12,7 @@ export default {
     },
 
     data(){return{
-        css: `${conf.cssClass} `,
+        css: conf.cssClass + ' ',
         box: null,
         html: '',
     }},
